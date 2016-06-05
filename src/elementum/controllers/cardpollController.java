@@ -7,12 +7,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class cardpollController {
-    private int cards = 0;
-    private int cardsLimit = 2;
+    private int cards;
+    private int cardsLimit = 3;
 
     private Stage stage;
 
@@ -33,6 +34,10 @@ public class cardpollController {
         Button btnBack = (Button)scene.lookup("#btnBack");
         btnBack.setOnAction(this::btnBackAction);
 
+        // Help label
+        Label lblHelp = (Label)scene.lookup("#lblHelp");
+        lblHelp.setText(String.format("Wähle %d Karten", cardsLimit - cards));
+
         // Cards
         for (Node card : scene.lookup("*").lookupAll(".card")) {
             card.setOnMouseClicked(t -> {
@@ -47,11 +52,11 @@ public class cardpollController {
                 }
                 else {
                     // Add card
-                    if (cards < cardsLimit) {
+                    if (cards < cardsLimit - 1) {
                         cards++;
                         styleClass.add("card-selected");
                     }
-                    else if (cards == cardsLimit) {
+                    else if (cards == cardsLimit - 1) {
                         cards++;
                         styleClass.add("card-selected");
                         btnContinue.setDisable(false);
@@ -60,6 +65,17 @@ public class cardpollController {
                         btnContinue.setDisable(false);
                     }
                 }
+
+                if (cards == cardsLimit) {
+                    lblHelp.setText("");
+                }
+                else if (cards == cardsLimit - 1) {
+                    lblHelp.setText("Wähle 1 Karte");
+                }
+                else if (cards < cardsLimit) {
+                    lblHelp.setText(String.format("Wähle %d Karten", cardsLimit - cards));
+                }
+
             });
         }
     }

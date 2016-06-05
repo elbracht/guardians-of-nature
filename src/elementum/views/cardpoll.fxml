@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
@@ -69,5 +70,6 @@
       </ImageView>
       <Button id="btnContinue" fx:id="btnStart" disable="true" layoutX="615.0" layoutY="495.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="WEITER" />
       <Button id="btnBack" fx:id="btnStart1" layoutX="615.0" layoutY="425.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="ZURÜCK" />
+      <Label id="lblHelp" alignment="CENTER" layoutX="618.0" layoutY="387.0" prefHeight="17.0" prefWidth="150.0" text="Wähle %d Karten" />
    </children>
 </Pane>

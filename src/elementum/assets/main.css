@@ -3,6 +3,11 @@
     src: url('OpenSans.ttf');
 }
 
+.label {
+    -fx-font-family: 'Open Sans', sans-serif;
+    -fx-font-size: 14px;
+}
+
 .button {
     -fx-background-color: rgba(41, 112, 176, 1.00);
     -fx-background-insets: 0;
