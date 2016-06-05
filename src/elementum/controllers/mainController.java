@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class mainController {
@@ -15,6 +16,7 @@ public class mainController {
 
         Parent root = FXMLLoader.load(getClass().getResource("../views/main.fxml"));
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("../assets/main.css").toExternalForm());
 
         stage.setTitle("Elementum");
         stage.setScene(scene);

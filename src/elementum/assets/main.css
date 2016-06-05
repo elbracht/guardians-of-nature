@@ -1,0 +1,32 @@
+@font-face {
+    font-family: Open Sans;
+    src: url('OpenSans.ttf');
+}
+
+.button {
+    -fx-background-color: rgba(41, 112, 176, 1.00);
+    -fx-background-insets: 0;
+    -fx-background-radius: 8;
+    -fx-padding: 3 30 3 30;
+    -fx-font-family: 'Open Sans', sans-serif;
+    -fx-font-size: 16px;
+    -fx-text-fill: rgba(255, 255, 255, 1.00);
+}
+
+.button:hover {
+    -fx-background-color: rgba(48, 130, 205, 1.00);
+    -fx-cursor: hand;
+}
+
+.button:pressed {
+    -fx-background-color: rgba(48, 130, 205, 1.00);
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.card:hover {
+    -fx-cursor: hand;
+}
+
+.card-selected {
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.8), 30, 0.3, 0, 0);
+}

@@ -21,7 +21,8 @@ public class cardpollController {
 
         Parent root = FXMLLoader.load(getClass().getResource("../views/cardpoll.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("../views/cardpoll.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("../assets/main.css").toExternalForm());
+
         stage.setScene(scene);
 
         // Continue Button

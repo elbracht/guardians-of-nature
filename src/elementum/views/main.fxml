@@ -6,7 +6,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elementum.Main">
    <children>
-      <Button fx:id="btnStart" layoutX="335.0" layoutY="240.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Start" />
-      <Button fx:id="btnExit" layoutX="335.0" layoutY="310.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Exit" />
+      <Button fx:id="btnStart" layoutX="335.0" layoutY="240.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="START" />
+      <Button fx:id="btnExit" layoutX="335.0" layoutY="310.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="BEENDEN" />
    </children>
 </Pane>

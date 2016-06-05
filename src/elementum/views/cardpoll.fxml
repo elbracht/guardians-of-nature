@@ -67,8 +67,7 @@
             <Image url="@../assets/bear.png" />
          </image>
       </ImageView>
-      <Button id="btnContinue" fx:id="btnStart" disable="true" layoutX="615.0" layoutY="495.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Weiter" />
-      <Label layoutX="621.0" layoutY="387.0" text="Wähle drei Spielkarten" />
-      <Button id="btnBack" fx:id="btnStart1" layoutX="615.0" layoutY="425.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Zurück" />
+      <Button id="btnContinue" fx:id="btnStart" disable="true" layoutX="615.0" layoutY="495.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="WEITER" />
+      <Button id="btnBack" fx:id="btnStart1" layoutX="615.0" layoutY="425.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="ZURÜCK" />
    </children>
 </Pane>
