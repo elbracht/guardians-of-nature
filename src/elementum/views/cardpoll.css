@@ -1,0 +1,7 @@
+.card:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(107, 191, 227, 0.8), 10, 0.5, 0, 0);
+}
+
+.card-selected {
+    -fx-effect: dropshadow(three-pass-box, rgba(107, 191, 227, 0.8), 10, 0.5, 0, 0);
+}
