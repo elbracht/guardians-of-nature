@@ -13,9 +13,9 @@ public class MainController {
     public MainController(Stage stage) throws Exception {
         this.stage = stage;
 
-        Parent root = FXMLLoader.load(getClass().getResource("../views/main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/main.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("../assets/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
 
         stage.setTitle("Elementum");
         stage.setResizable(false);

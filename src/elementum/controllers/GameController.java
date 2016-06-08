@@ -29,9 +29,9 @@ public class GameController {
         this.cardsSelected = cardsSelected;
         this.cardActive = null;
 
-        Parent root = FXMLLoader.load(getClass().getResource("../views/game.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/game.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("../assets/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
 
         stage.setScene(scene);
 

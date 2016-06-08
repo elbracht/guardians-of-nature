@@ -8,7 +8,7 @@ public class FontLoader {
 
     public Font getOpenSans(FontType fontType, float size) {
         try {
-            String fontName = String.format("../assets/OpenSans-%s.ttf", fontType.toString());
+            String fontName = String.format("/elementum/assets/OpenSans-%s.ttf", fontType.toString());
             InputStream inputStream = getClass().getResourceAsStream(fontName);
             Font font = Font.createFont(java.awt.Font.TRUETYPE_FONT, inputStream);
             return font.deriveFont(size);
