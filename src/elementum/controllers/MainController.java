@@ -5,13 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class mainController {
+public class MainController {
     private Stage stage;
 
-    public mainController(Stage stage) throws Exception {
+    public MainController(Stage stage) throws Exception {
         this.stage = stage;
 
         Parent root = FXMLLoader.load(getClass().getResource("../views/main.fxml"));
@@ -34,7 +33,7 @@ public class mainController {
 
     private void btnStartAction(ActionEvent event) {
         try {
-            new cardpollController(stage);
+            new CardpollController(stage);
         }
         catch (Exception ex) {
             // TODO: Catch exception

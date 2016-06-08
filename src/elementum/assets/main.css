@@ -1,6 +1,6 @@
 @font-face {
     font-family: Open Sans;
-    src: url('OpenSans.ttf');
+    src: url('OpenSans-Regular.ttf');
 }
 
 .label {
@@ -8,7 +8,27 @@
     -fx-font-size: 14px;
 }
 
-.button {
+.btn-sml {
+    -fx-background-color: rgba(41, 112, 176, 1.00);
+    -fx-background-insets: 0;
+    -fx-background-radius: 4;
+    -fx-padding: 3 30 3 30;
+    -fx-font-family: 'Open Sans', sans-serif;
+    -fx-font-size: 12px;
+    -fx-text-fill: rgba(255, 255, 255, 1.00);
+}
+
+.btn-sml:hover {
+    -fx-background-color: rgba(48, 130, 205, 1.00);
+    -fx-cursor: hand;
+}
+
+.btn-sml:pressed {
+    -fx-background-color: rgba(48, 130, 205, 1.00);
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.btn {
     -fx-background-color: rgba(41, 112, 176, 1.00);
     -fx-background-insets: 0;
     -fx-background-radius: 8;
@@ -18,12 +38,12 @@
     -fx-text-fill: rgba(255, 255, 255, 1.00);
 }
 
-.button:hover {
+.btn:hover {
     -fx-background-color: rgba(48, 130, 205, 1.00);
     -fx-cursor: hand;
 }
 
-.button:pressed {
+.btn:pressed {
     -fx-background-color: rgba(48, 130, 205, 1.00);
     -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
 }

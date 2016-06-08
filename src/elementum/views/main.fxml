@@ -7,8 +7,8 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elementum.Main">
    <children>
-      <Button fx:id="btnStart" layoutX="335.0" layoutY="240.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="START" />
-      <Button fx:id="btnExit" layoutX="335.0" layoutY="310.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="BEENDEN" />
+      <Button fx:id="btnStart" layoutX="335.0" layoutY="240.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="START" />
+      <Button fx:id="btnExit" layoutX="335.0" layoutY="310.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="BEENDEN" />
       <ImageView fitHeight="200.0" fitWidth="800.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/main-footer.png" />
