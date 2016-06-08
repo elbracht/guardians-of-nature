@@ -97,7 +97,7 @@ public class CardpollController {
 
     private void btnContinueAction(ActionEvent event) {
         try {
-            new GameController(stage, cardsSelected);
+            new GameController(stage, cards, cardsSelected);
         }
         catch (Exception ex) {
             // TODO: Catch exception
