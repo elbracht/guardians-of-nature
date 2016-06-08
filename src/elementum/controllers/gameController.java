@@ -2,6 +2,7 @@ package elementum.controllers;
 
 import elementum.models.Card;
 import elementum.models.Cards;
+import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -19,12 +20,14 @@ public class GameController {
     private Stage stage;
     private Stage dialogStage;
     private Cards cards;
-    private ArrayList<Card> selectedCards;
+    private ArrayList<Card> cardsSelected;
+    private Card cardActive;
 
-    public GameController(Stage stage, Cards cards, ArrayList<Card> selectedCards) throws Exception {
+    public GameController(Stage stage, Cards cards, ArrayList<Card> cardsSelected) throws Exception {
         this.stage = stage;
         this.cards = cards;
-        this.selectedCards = selectedCards;
+        this.cardsSelected = cardsSelected;
+        this.cardActive = null;
 
         Parent root = FXMLLoader.load(getClass().getResource("../views/game.fxml"));
         Scene scene = new Scene(root);
@@ -44,13 +47,39 @@ public class GameController {
         for (Node card : scene.lookup("*").lookupAll(".card")) {
             String cardId = card.getId();
             if (cardId.startsWith("computer")) {
-                //
+                int id = Integer.parseInt(cardId.substring("computer".length()));
+                ImageView cardImageView = (ImageView)card;
+
+                // Events for click on computer card
+                card.setOnMouseClicked(t -> {
+                    //
+                });
             }
             else if (cardId.startsWith("player")) {
                 int id = Integer.parseInt(cardId.substring("player".length()));
                 ImageView cardImageView = (ImageView)card;
                 BufferedImage cardImage = cards.getCards().get(id).getImage();
                 cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
+
+                // Event for click on player card
+                card.setOnMouseClicked(t -> {
+                    ImageView imageView = (ImageView)t.getSource();
+                    ObservableList styleClass = imageView.getStyleClass();
+                    int imageId = Integer.parseInt(imageView.getId().substring("player".length()));
+
+                    if (styleClass.contains("card-selected")) {
+                        if (cardActive != null) {
+                            cardActive = null;
+                            styleClass.remove("card-selected");
+                        }
+                    }
+                    else {
+                        if (cardActive == null) {
+                            cardActive = cards.getCards().get(imageId);
+                            styleClass.add("card-selected");
+                        }
+                    }
+                });
             }
         }
     }
