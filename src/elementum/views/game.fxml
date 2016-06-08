@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
@@ -13,14 +12,14 @@
             <Image url="@../assets/game-background.png" />
          </image>
       </ImageView>
-      <ImageView id="0" fitHeight="150.0" fitWidth="125.0" layoutX="20.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="20.0" y="40.0" />
-      <ImageView id="1" fitHeight="150.0" fitWidth="125.0" layoutX="145.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="40.0" y="40.0" />
-      <ImageView id="2" fitHeight="150.0" fitWidth="125.0" layoutX="268.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="60.0" y="40.0" />
-      <ImageView id="3" fitHeight="150.0" fitWidth="125.0" layoutX="330.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="20.0" />
-      <ImageView id="4" fitHeight="150.0" fitWidth="125.0" layoutX="455.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="40.0" />
-      <ImageView id="5" fitHeight="150.0" fitWidth="125.0" layoutX="580.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="60.0" />
-      <Button id="btnBack" fx:id="btnStart1" layoutX="615.0" layoutY="495.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="ZURÜCK" />
-      <Button id="btnHelp" fx:id="btnStart11" layoutX="615.0" layoutY="425.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="HILFE" />
+      <ImageView id="player0" fitHeight="150.0" fitWidth="125.0" layoutX="20.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="20.0" y="40.0" />
+      <ImageView id="player1" fitHeight="150.0" fitWidth="125.0" layoutX="145.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="40.0" y="40.0" />
+      <ImageView id="player2" fitHeight="150.0" fitWidth="125.0" layoutX="268.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="60.0" y="40.0" />
+      <ImageView id="computer0" fitHeight="150.0" fitWidth="125.0" layoutX="330.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="20.0" />
+      <ImageView id="computer1" fitHeight="150.0" fitWidth="125.0" layoutX="455.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="40.0" />
+      <ImageView id="computer2" fitHeight="150.0" fitWidth="125.0" layoutX="580.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="60.0" />
+      <Button id="btnBack" fx:id="btnStart1" layoutX="615.0" layoutY="495.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="ZURÜCK" />
+      <Button id="btnHelp" fx:id="btnStart11" layoutX="615.0" layoutY="425.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="HILFE" />
       <Label id="lblHelp" alignment="CENTER" layoutX="40.0" layoutY="358.0" prefHeight="17.0" prefWidth="415.0" text="Spieler" />
       <Label id="lblHelp" alignment="CENTER" layoutX="350.0" layoutY="224.0" prefHeight="17.0" prefWidth="415.0" text="Computer" />
    </children>
