@@ -5,10 +5,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class gameController {
+public class GameController {
     private Stage stage;
 
-    public gameController(Stage stage) throws Exception {
+    public GameController(Stage stage) throws Exception {
         this.stage = stage;
 
         Parent root = FXMLLoader.load(getClass().getResource("../views/game.fxml"));
