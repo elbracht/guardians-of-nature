@@ -90,9 +90,9 @@ public class GameController {
 
     private void btnBackAction(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("../views/dialog.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/dialog.fxml"));
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("../assets/main.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
 
             dialogStage = new Stage();
             dialogStage.setTitle("Spiel beenden");
