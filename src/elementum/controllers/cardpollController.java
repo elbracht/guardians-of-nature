@@ -81,7 +81,12 @@ public class cardpollController {
     }
 
     private void btnContinueAction(ActionEvent event) {
-
+        try {
+            new gameController(stage);
+        }
+        catch (Exception ex) {
+            // TODO: Catch exception
+        }
     }
 
     private void btnBackAction(ActionEvent event) {
