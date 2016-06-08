@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -8,5 +9,10 @@
    <children>
       <Button fx:id="btnStart" layoutX="335.0" layoutY="240.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="START" />
       <Button fx:id="btnExit" layoutX="335.0" layoutY="310.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="BEENDEN" />
+      <ImageView fitHeight="200.0" fitWidth="800.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/main-footer.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
