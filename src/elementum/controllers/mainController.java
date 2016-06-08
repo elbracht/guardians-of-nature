@@ -19,6 +19,7 @@ public class mainController {
         scene.getStylesheets().add(getClass().getResource("../assets/main.css").toExternalForm());
 
         stage.setTitle("Elementum");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
 
