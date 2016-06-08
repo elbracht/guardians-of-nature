@@ -14,7 +14,7 @@ public class Cards {
         bear.setName("Bär");
         bear.setAttack(10);
         bear.setHealth(10);
-        bear.setImage(ImageIO.read(getClass().getResourceAsStream("../assets/cards/bear.png")));
+        bear.setImage(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/bear.png")));
         bear.setColor("#573c21");
         bear.paint();
 
@@ -22,7 +22,7 @@ public class Cards {
         bear2.setName("Bär 2");
         bear2.setAttack(15);
         bear2.setHealth(5);
-        bear2.setImage(ImageIO.read(getClass().getResourceAsStream("../assets/cards/bear.png")));
+        bear2.setImage(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/bear.png")));
         bear2.setColor("#573c21");
         bear2.paint();
 
@@ -30,7 +30,7 @@ public class Cards {
         bear3.setName("Bär 3");
         bear3.setAttack(5);
         bear3.setHealth(15);
-        bear3.setImage(ImageIO.read(getClass().getResourceAsStream("../assets/cards/bear.png")));
+        bear3.setImage(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/bear.png")));
         bear3.setColor("#573c21");
         bear3.paint();
 

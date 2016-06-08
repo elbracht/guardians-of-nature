@@ -1,6 +1,6 @@
 package elementum.models;
 
-import elementum.controllers.FontLoader;
+import elementum.controllers.Utils.FontLoader;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

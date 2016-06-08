@@ -28,9 +28,9 @@ public class CardpollController {
         this.cards = new Cards();
         this.cardsSelected = new ArrayList<>();
 
-        Parent root = FXMLLoader.load(getClass().getResource("../views/cardpoll.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/cardpoll.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("../assets/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
 
         stage.setScene(scene);
 
