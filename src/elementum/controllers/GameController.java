@@ -49,58 +49,63 @@ public class GameController {
 
         // Cards
         for (Node card : scene.lookup("*").lookupAll(".card")) {
-            String cardId = card.getId();
-            if (cardId.startsWith("computer")) {
-                int id = Integer.parseInt(cardId.substring("computer".length()));
-                ImageView cardImageView = (ImageView)card;
-                BufferedImage cardImage = computer.getCardsSelected().get(id).getImage();
-                cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
-
-                // Cursor
-                card.setOnMouseEntered(t -> {
-                    if (cardActive != null) {
-                        card.setCursor(new CursorLoader().getAttack());
-                    }
-                });
-
-                card.setOnMouseExited(t -> {
-                    card.setCursor(Cursor.DEFAULT);
-                });
-
-                // Events for click on computer card
-                card.setOnMouseClicked(t -> {
-                    //
-                });
+            int cardId = Integer.parseInt(card.getId());
+            if (cardId < 3) {
+                initPlayerCard(card, cardId);
             }
-            else if (cardId.startsWith("player")) {
-                int id = Integer.parseInt(cardId.substring("player".length()));
-                ImageView cardImageView = (ImageView)card;
-                BufferedImage cardImage = cards.getCards().get(id).getImage();
-                cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
-
-                // Cursor
-                card.setCursor(new CursorLoader().getSelect());
-
-                // Event for click on player card
-                card.setOnMouseClicked(t -> {
-                    ImageView imageView = (ImageView)t.getSource();
-                    ObservableList styleClass = imageView.getStyleClass();
-                    int imageId = Integer.parseInt(imageView.getId().substring("player".length()));
-
-                    if (styleClass.contains("card-selected")) {
-                        if (cardActive != null) {
-                            cardActive = null;
-                            styleClass.remove("card-selected");
-                        }
-                    }
-                    else {
-                        unselectAllCards();
-                        cardActive = cards.getCards().get(imageId);
-                        styleClass.add("card-selected");
-                    }
-                });
+            else {
+                initComputerCard(card, cardId - 3);
             }
         }
+    }
+
+    private void initComputerCard(Node card, int cardId) {
+        ImageView cardImageView = (ImageView)card;
+        BufferedImage cardImage = computer.getCardsSelected().get(cardId).getImage();
+        cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
+
+        // Cursor
+        card.setOnMouseEntered(t -> {
+            if (cardActive != null) {
+                card.setCursor(new CursorLoader().getAttack());
+            }
+        });
+
+        card.setOnMouseExited(t -> {
+            card.setCursor(Cursor.DEFAULT);
+        });
+
+        // Events for click on computer card
+        card.setOnMouseClicked(t -> {
+            //
+        });
+    }
+
+    private void initPlayerCard(Node card, int cardId) {
+        ImageView cardImageView = (ImageView)card;
+        BufferedImage cardImage = cards.getCards().get(cardId).getImage();
+        cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
+
+        // Cursor
+        card.setCursor(new CursorLoader().getSelect());
+
+        // Event for click on player card
+        card.setOnMouseClicked(t -> {
+            ImageView imageView = (ImageView)t.getSource();
+            ObservableList styleClass = imageView.getStyleClass();
+
+            if (styleClass.contains("card-selected")) {
+                if (cardActive != null) {
+                    cardActive = null;
+                    styleClass.remove("card-selected");
+                }
+            }
+            else {
+                unselectAllCards();
+                cardActive = cards.getCards().get(Integer.parseInt(imageView.getId()));
+                styleClass.add("card-selected");
+            }
+        });
     }
 
     private void unselectAllCards() {
