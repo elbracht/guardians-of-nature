@@ -22,12 +22,14 @@ public class GameController {
     private Cards cards;
     private ArrayList<Card> cardsSelected;
     private Card cardActive;
+    private Computer computer;
 
     public GameController(Stage stage, Cards cards, ArrayList<Card> cardsSelected) throws Exception {
         this.stage = stage;
         this.cards = cards;
         this.cardsSelected = cardsSelected;
         this.cardActive = null;
+        this.computer = new Computer();
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/game.fxml"));
         Scene scene = new Scene(root);
@@ -49,6 +51,8 @@ public class GameController {
             if (cardId.startsWith("computer")) {
                 int id = Integer.parseInt(cardId.substring("computer".length()));
                 ImageView cardImageView = (ImageView)card;
+                BufferedImage cardImage = computer.getCardsSelected().get(id).getImage();
+                cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
 
                 // Events for click on computer card
                 card.setOnMouseClicked(t -> {
