@@ -1,11 +1,13 @@
 package elementum.controllers;
 
+import elementum.controllers.Utils.CursorLoader;
 import elementum.models.Card;
 import elementum.models.Cards;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,9 +34,9 @@ public class GameController {
         this.computer = new Computer();
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/game.fxml"));
+
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
-
         stage.setScene(scene);
 
         // Help Button
@@ -54,6 +56,17 @@ public class GameController {
                 BufferedImage cardImage = computer.getCardsSelected().get(id).getImage();
                 cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
 
+                // Cursor
+                card.setOnMouseEntered(t -> {
+                    if (cardActive != null) {
+                        card.setCursor(new CursorLoader().getAttack());
+                    }
+                });
+
+                card.setOnMouseExited(t -> {
+                    card.setCursor(Cursor.DEFAULT);
+                });
+
                 // Events for click on computer card
                 card.setOnMouseClicked(t -> {
                     //
@@ -64,6 +77,9 @@ public class GameController {
                 ImageView cardImageView = (ImageView)card;
                 BufferedImage cardImage = cards.getCards().get(id).getImage();
                 cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
+
+                // Cursor
+                card.setCursor(new CursorLoader().getSelect());
 
                 // Event for click on player card
                 card.setOnMouseClicked(t -> {
@@ -95,6 +111,7 @@ public class GameController {
     private void btnBackAction(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/dialog.fxml"));
+
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
 

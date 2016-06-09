@@ -1,11 +1,13 @@
 package elementum.controllers;
 
+import elementum.controllers.Utils.CursorLoader;
 import elementum.models.Card;
 import elementum.models.Cards;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -29,6 +31,7 @@ public class CardpollController {
         this.cardsSelected = new ArrayList<>();
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/cardpoll.fxml"));
+
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
 
@@ -53,6 +56,9 @@ public class CardpollController {
             ImageView cardImageView = (ImageView)card;
             BufferedImage cardImage = cards.getCards().get(cardId).getImage();
             cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
+
+            // Cursor
+            card.setCursor(new CursorLoader().getSelect());
 
             // Add event
             card.setOnMouseClicked(t -> {

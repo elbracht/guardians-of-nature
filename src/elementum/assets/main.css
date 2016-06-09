@@ -20,7 +20,6 @@
 
 .btn-sml:hover {
     -fx-background-color: rgba(48, 130, 205, 1.00);
-    -fx-cursor: hand;
 }
 
 .btn-sml:pressed {
@@ -40,16 +39,11 @@
 
 .btn:hover {
     -fx-background-color: rgba(48, 130, 205, 1.00);
-    -fx-cursor: hand;
 }
 
 .btn:pressed {
     -fx-background-color: rgba(48, 130, 205, 1.00);
     -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
-}
-
-.card:hover {
-    -fx-cursor: hand;
 }
 
 .card-selected {

@@ -1,10 +1,11 @@
 package elementum.controllers;
 
+import elementum.controllers.Utils.CursorLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.*;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class MainController {
@@ -14,6 +15,7 @@ public class MainController {
         this.stage = stage;
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/main.fxml"));
+
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
 
