@@ -94,13 +94,18 @@ public class GameController {
                         }
                     }
                     else {
-                        if (cardActive == null) {
-                            cardActive = cards.getCards().get(imageId);
-                            styleClass.add("card-selected");
-                        }
+                        unselectAllCards();
+                        cardActive = cards.getCards().get(imageId);
+                        styleClass.add("card-selected");
                     }
                 });
             }
+        }
+    }
+
+    private void unselectAllCards() {
+        for (Node card : stage.getScene().lookup("*").lookupAll(".card")) {
+            card.getStyleClass().remove("card-selected");
         }
     }
 
