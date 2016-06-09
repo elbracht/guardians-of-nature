@@ -20,7 +20,6 @@ import java.util.ArrayList;
 
 public class GameController {
     private Stage stage;
-    private Stage dialogStage;
     private Cards cards;
     private ArrayList<Card> cardsSelected;
     private Card cardActive;
@@ -120,33 +119,7 @@ public class GameController {
 
     private void btnBackAction(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/dialog.fxml"));
-
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
-
-            dialogStage = new Stage();
-            dialogStage.setTitle("Spiel beenden");
-            dialogStage.setResizable(false);
-            dialogStage.setScene(scene);
-            dialogStage.show();
-
-            Button btnYes = (Button)scene.lookup("#btnYes");
-            btnYes.setOnAction(e -> {
-                try {
-                    new MainController(stage);
-                }
-                catch (Exception ex) {
-                    // TODO: Catch exception
-                }
-
-                dialogStage.close();
-            });
-
-            Button btnNo = (Button)scene.lookup("#btnNo");
-            btnNo.setOnAction(e -> {
-                dialogStage.close();
-            });
+            new DialogController(stage);
         }
         catch (Exception ex) {
             // TODO: Catch exception
