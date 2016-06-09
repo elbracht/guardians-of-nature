@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -76,7 +77,25 @@ public class GameController {
 
         // Events for click on computer card
         card.setOnMouseClicked(t -> {
-            //
+            if (cardActive != null) {
+                ImageView imageView = (ImageView)t.getSource();
+                int id = Integer.parseInt(imageView.getId()) - 3;
+
+                Card computerCard = computer.getCardsSelected().get(id);
+                computerCard.setHealth(computerCard.getHealth() - cardActive.getAttack());
+                computerCard.paint();
+
+                BufferedImage computerImage = computerCard.getImage();
+                imageView.setImage(SwingFXUtils.toFXImage(computerImage, null));
+
+                if (computerCard.getHealth() <= 0) {
+                    ColorAdjust colorAdjust = new ColorAdjust();
+                    colorAdjust.setBrightness(-0.5);
+
+                    imageView.setEffect(colorAdjust);
+                    imageView.setDisable(true);
+                }
+            }
         });
     }
 

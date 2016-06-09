@@ -9,6 +9,7 @@ public class Card {
     private String name;
     private int attack;
     private int health;
+    private BufferedImage imageDefault;
     private BufferedImage image;
     private Color color;
 
@@ -36,6 +37,14 @@ public class Card {
         this.health = health;
     }
 
+    public BufferedImage getImageDefault() {
+        return imageDefault;
+    }
+
+    public void setImageDefault(BufferedImage imageDefault) {
+        this.imageDefault = imageDefault;
+    }
+
     public BufferedImage getImage() {
         return image;
     }
@@ -53,8 +62,8 @@ public class Card {
     }
 
     public void paint() {
-        int width = getImage().getWidth();
-        int height = getImage().getHeight();
+        int width = getImageDefault().getWidth();
+        int height = getImageDefault().getHeight();
 
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
@@ -69,7 +78,7 @@ public class Card {
                 RenderingHints.KEY_FRACTIONALMETRICS,
                 RenderingHints.VALUE_FRACTIONALMETRICS_ON);
 
-        g2d.drawImage(getImage(), 0, 0, null);
+        g2d.drawImage(getImageDefault(), 0, 0, null);
         g2d.setPaint(getColor());
         g2d.setFont(new FontLoader().getOpenSans(FontLoader.FontType.BOLD, 60.0f));
 
