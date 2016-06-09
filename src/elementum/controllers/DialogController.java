@@ -1,5 +1,6 @@
 package elementum.controllers;
 
+import elementum.controllers.Utils.CursorLoader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ public class DialogController {
         this.stage = stage;
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/dialog.fxml"));
+        root.setCursor(new CursorLoader().getDefault());
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());

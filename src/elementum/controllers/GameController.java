@@ -34,9 +34,11 @@ public class GameController {
         this.computer = new Computer();
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/game.fxml"));
+        root.setCursor(new CursorLoader().getDefault());
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
+
         stage.setScene(scene);
 
         // Help Button
