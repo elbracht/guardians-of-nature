@@ -1,4 +1,4 @@
-package elementum.controllers.Utils;
+package elementum.controllers.utils;
 
 import java.awt.*;
 import java.io.InputStream;

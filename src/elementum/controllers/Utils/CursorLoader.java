@@ -1,4 +1,4 @@
-package elementum.controllers.Utils;
+package elementum.controllers.utils;
 
 import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;

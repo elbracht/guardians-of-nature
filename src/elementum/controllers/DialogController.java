@@ -1,6 +1,6 @@
 package elementum.controllers;
 
-import elementum.controllers.Utils.CursorLoader;
+import elementum.controllers.utils.CursorLoader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

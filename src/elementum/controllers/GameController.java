@@ -1,6 +1,7 @@
 package elementum.controllers;
 
-import elementum.controllers.Utils.CursorLoader;
+import elementum.controllers.utils.CursorLoader;
+import elementum.controllers.game.Computer;
 import elementum.models.Card;
 import elementum.models.Cards;
 import javafx.collections.ObservableList;
@@ -63,7 +64,7 @@ public class GameController {
 
     private void initComputerCard(Node card, int cardId) {
         ImageView cardImageView = (ImageView)card;
-        BufferedImage cardImage = computer.getCardsSelected().get(cardId).getImage();
+        BufferedImage cardImage = computer.getCards().get(cardId).getImage();
         cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
 
         // Cursor
@@ -83,7 +84,7 @@ public class GameController {
                 ImageView imageView = (ImageView)t.getSource();
                 int id = Integer.parseInt(imageView.getId()) - 3;
 
-                Card computerCard = computer.getCardsSelected().get(id);
+                Card computerCard = computer.getCards().get(id);
                 computerCard.setHealth(computerCard.getHealth() - cardActive.getAttack());
                 computerCard.paint();
 
@@ -103,7 +104,7 @@ public class GameController {
 
     private void initPlayerCard(Node card, int cardId) {
         ImageView cardImageView = (ImageView)card;
-        BufferedImage cardImage = cards.getCards().get(cardId).getImage();
+        BufferedImage cardImage = Cards.getAllCards().get(cardId).getImage();
         cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
 
         // Cursor
@@ -122,7 +123,7 @@ public class GameController {
             }
             else {
                 unselectAllCards();
-                cardActive = cards.getCards().get(Integer.parseInt(imageView.getId()));
+                cardActive = Cards.getAllCards().get(Integer.parseInt(imageView.getId()));
                 styleClass.add("card-selected");
             }
         });

@@ -1,13 +1,12 @@
 package elementum.controllers;
 
-import elementum.controllers.Utils.CursorLoader;
+import elementum.controllers.utils.CursorLoader;
 import elementum.models.Card;
 import elementum.models.Cards;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -55,7 +54,7 @@ public class CardpollController {
             // Add images
             int cardId = Integer.parseInt(card.getId());
             ImageView cardImageView = (ImageView)card;
-            BufferedImage cardImage = cards.getCards().get(cardId).getImage();
+            BufferedImage cardImage = Cards.getAllCards().get(cardId).getImage();
             cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
 
             // Cursor
@@ -69,18 +68,18 @@ public class CardpollController {
 
                 if (styleClass.contains("card-selected")) {
                     // Remove Card
-                    cardsSelected.remove(cards.getCards().get(imageId));
+                    cardsSelected.remove(Cards.getAllCards().get(imageId));
                     styleClass.remove("card-selected");
                     btnContinue.setDisable(true);
                 }
                 else {
                     // Add Card
                     if (cardsSelected.size() < cardsLimit - 1) {
-                        cardsSelected.add(cards.getCards().get(imageId));
+                        cardsSelected.add(Cards.getAllCards().get(imageId));
                         styleClass.add("card-selected");
                     }
                     else if (cardsSelected.size() == cardsLimit - 1) {
-                        cardsSelected.add(cards.getCards().get(imageId));
+                        cardsSelected.add(Cards.getAllCards().get(imageId));
                         styleClass.add("card-selected");
                         btnContinue.setDisable(false);
                     }

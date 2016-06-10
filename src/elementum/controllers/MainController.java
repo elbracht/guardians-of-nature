@@ -1,11 +1,10 @@
 package elementum.controllers;
 
-import elementum.controllers.Utils.CursorLoader;
+import elementum.controllers.utils.CursorLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class MainController {

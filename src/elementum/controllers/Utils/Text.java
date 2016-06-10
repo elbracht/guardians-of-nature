@@ -1,4 +1,4 @@
-package elementum.controllers.Utils;
+package elementum.controllers.utils;
 
 public class Text {
     public static String capitalize(String value) {
