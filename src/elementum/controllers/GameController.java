@@ -9,7 +9,6 @@ import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -86,24 +85,23 @@ public class GameController implements Observer {
         // Events for click on computer card
         card.setOnMouseClicked(t -> {
             if (cardActive != null) {
+                // Get id from ImageView
                 ImageView imageView = (ImageView)t.getSource();
-                int id = Integer.parseInt(imageView.getId()) - 3;
+                String imageViewId = imageView.getId();
+                int id = Integer.parseInt(imageViewId) - 3;
 
-                Card computerCard = computer.getCard(id);
-                computerCard.setHealth(computerCard.getHealth() - cardActive.getAttack());
-                computerCard.paint();
+                // Attack computer
+                computer.attack(id, cardActive.getAttack());
 
-                BufferedImage computerImage = computerCard.getImage();
-                imageView.setImage(SwingFXUtils.toFXImage(computerImage, null));
-
-                if (computerCard.getHealth() <= 0) {
-                    ColorAdjust colorAdjust = new ColorAdjust();
-                    colorAdjust.setBrightness(-0.5);
-
-                    imageView.setEffect(colorAdjust);
-                    imageView.setDisable(true);
+                // Add new image to ImageView
+                if (computer.getCard(id).getHealth() <= 0) {
+                    addCard(computer.getCard(id), imageView, true);
+                }
+                else {
+                    addCard(computer.getCard(id), imageView, false);
                 }
 
+                // Change turn
                 referee.setPlayersTurn(false);
             }
         });
@@ -143,6 +141,22 @@ public class GameController implements Observer {
         });
     }
 
+    /**
+     * Manage cards in ImageViews
+     */
+    private void addCard(Card card, ImageView imageView, Boolean grayedOut) {
+        BufferedImage image = card.getImage();
+        imageView.setImage(SwingFXUtils.toFXImage(image, null));
+
+        if (grayedOut) {
+            ColorAdjust colorAdjust = new ColorAdjust();
+            colorAdjust.setBrightness(-0.5);
+
+            imageView.setEffect(colorAdjust);
+            imageView.setDisable(true);
+        }
+    }
+
     private void unselectAllCards() {
         cardActive = null;
 
@@ -151,6 +165,24 @@ public class GameController implements Observer {
         }
     }
 
+    /**
+     * Observer
+     */
+    public void update(Observable obs, Object obj) {
+        Label lblInfo = (Label)stage.getScene().lookup("#lblInfo");
+
+        if (referee.isPlayersTurn()) {
+            lblInfo.setText("Spieler ist am Zug.");
+        }
+        else {
+            unselectAllCards();
+            lblInfo.setText("Computer ist am Zug.");
+        }
+    }
+
+    /**
+     * Events
+     */
     private void btnHelpAction(ActionEvent event) {
         //
     }
@@ -161,18 +193,6 @@ public class GameController implements Observer {
         }
         catch (Exception ex) {
             // TODO: Catch exception
-        }
-    }
-
-    public void update(Observable obs, Object obj) {
-        Label lblInfo = (Label)stage.getScene().lookup("#lblInfo");
-
-        if (referee.isPlayersTurn()) {
-            lblInfo.setText("Spieler ist am Zug.");
-        }
-        else {
-            unselectAllCards();
-            lblInfo.setText("Computer ist am Zug.");
         }
     }
 }

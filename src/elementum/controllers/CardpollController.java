@@ -21,12 +21,16 @@ import java.awt.image.BufferedImage;
 
 public class CardpollController {
     private Stage stage;
-    private Cards cards = new Cards();
-    private Player player = new Player();
-    private Computer computer = new Computer(cards);
+    private Cards cards;
+    private Player player;
+    private Computer computer;
 
     public CardpollController(Stage stage) throws Exception {
         this.stage = stage;
+
+        cards = new Cards();
+        player = new Player();
+        computer = new Computer(cards);
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/cardpoll.fxml"));
         root.setCursor(CursorLoader.getDefault());

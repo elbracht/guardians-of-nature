@@ -7,7 +7,11 @@ import java.util.ArrayList;
 public class Player {
     public static final int CARD_LIMIT = 3;
 
-    private ArrayList<Card> cards = new ArrayList<>();
+    private ArrayList<Card> cards;
+
+    public Player() {
+        cards = new ArrayList<>();
+    }
 
     public void addCard(Card card) {
         cards.add(card);
@@ -23,5 +27,18 @@ public class Player {
 
     public int getCardsCount() {
         return cards.size();
+    }
+
+    public Boolean containCard(Card card) {
+        return cards.contains(card);
+    }
+
+    public void attack(int index, int damage) {
+        attack(getCard(index), damage);
+    }
+
+    public void attack(Card card, int damage) {
+        card.setHealth(card.getHealth() - damage);
+        card.paint();
     }
 }

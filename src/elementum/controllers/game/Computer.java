@@ -3,30 +3,24 @@ package elementum.controllers.game;
 import elementum.models.Card;
 import elementum.models.Cards;
 
-import java.util.ArrayList;
 import java.util.Random;
 
-public class Computer {
-    private ArrayList<Card> cardArray = new ArrayList<>();
+public class Computer extends Player{
+    public Computer(Cards allCards) {
+        super();
 
-    public Card getCard(int index) {
-        return cardArray.get(index);
+        addRandomCards(allCards);
     }
 
-    public Computer(Cards cards) throws Exception {
-        addRandomCards(cards);
-    }
-
-    private void addRandomCards(Cards cards) {
+    public void addRandomCards(Cards allCards) {
         Random random = new Random();
-        ArrayList<Card> allCards = cards.getCards();
-        Card randomCard = allCards.get(random.nextInt(allCards.size()));
+        Card randomCard = allCards.getCards().get(random.nextInt(allCards.getCards().size()));
 
-        if (cardArray.size() < 3) {
-            if (!cardArray.contains(randomCard)) {
-                cardArray.add(randomCard);
+        if (super.getCardsCount() < super.CARD_LIMIT) {
+            if (!super.containCard(randomCard)) {
+                super.addCard(randomCard);
             }
-            addRandomCards(cards);
+            addRandomCards(allCards);
         }
     }
 }
