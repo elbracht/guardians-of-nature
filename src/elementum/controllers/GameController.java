@@ -18,21 +18,14 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 public class GameController {
     private Stage stage;
-    private Cards cards;
-    private ArrayList<Card> cardsSelected;
-    private Card cardActive;
-    private Computer computer;
+    private Card cardActive = null;
+    private Computer computer = new Computer();
 
-    public GameController(Stage stage, Cards cards, ArrayList<Card> cardsSelected) throws Exception {
+    public GameController(Stage stage) throws Exception {
         this.stage = stage;
-        this.cards = cards;
-        this.cardsSelected = cardsSelected;
-        this.cardActive = null;
-        this.computer = new Computer();
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/game.fxml"));
         root.setCursor(CursorLoader.getDefault());

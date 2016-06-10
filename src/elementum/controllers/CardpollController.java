@@ -20,14 +20,11 @@ import java.util.ArrayList;
 
 public class CardpollController {
     private Stage stage;
-    private Cards cards;
-    private ArrayList<Card> cardsSelected;
+    private ArrayList<Card> cards = new ArrayList<>();
     private int cardsLimit = 3;
 
     public CardpollController(Stage stage) throws Exception {
         this.stage = stage;
-        this.cards = new Cards();
-        this.cardsSelected = new ArrayList<>();
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/cardpoll.fxml"));
         root.setCursor(CursorLoader.getDefault());
@@ -47,7 +44,7 @@ public class CardpollController {
 
         // Help label
         Label lblHelp = (Label)scene.lookup("#lblHelp");
-        lblHelp.setText(String.format("Wähle %d Karten", cardsLimit - cardsSelected.size()));
+        lblHelp.setText(String.format("Wähle %d Karten", cardsLimit - cards.size()));
 
         // Cards
         for (Node card : scene.lookup("*").lookupAll(".card")) {
@@ -68,18 +65,18 @@ public class CardpollController {
 
                 if (styleClass.contains("card-selected")) {
                     // Remove Card
-                    cardsSelected.remove(Cards.getAllCards().get(imageId));
+                    cards.remove(Cards.getAllCards().get(imageId));
                     styleClass.remove("card-selected");
                     btnContinue.setDisable(true);
                 }
                 else {
                     // Add Card
-                    if (cardsSelected.size() < cardsLimit - 1) {
-                        cardsSelected.add(Cards.getAllCards().get(imageId));
+                    if (cards.size() < cardsLimit - 1) {
+                        cards.add(Cards.getAllCards().get(imageId));
                         styleClass.add("card-selected");
                     }
-                    else if (cardsSelected.size() == cardsLimit - 1) {
-                        cardsSelected.add(Cards.getAllCards().get(imageId));
+                    else if (cards.size() == cardsLimit - 1) {
+                        cards.add(Cards.getAllCards().get(imageId));
                         styleClass.add("card-selected");
                         btnContinue.setDisable(false);
                     }
@@ -88,14 +85,14 @@ public class CardpollController {
                     }
                 }
 
-                if (cardsSelected.size() == cardsLimit) {
+                if (cards.size() == cardsLimit) {
                     lblHelp.setText("");
                 }
-                else if (cardsSelected.size() == cardsLimit - 1) {
+                else if (cards.size() == cardsLimit - 1) {
                     lblHelp.setText("Wähle 1 Karte");
                 }
-                else if (cardsSelected.size() < cardsLimit) {
-                    lblHelp.setText(String.format("Wähle %d Karten", cardsLimit - cardsSelected.size()));
+                else if (cards.size() < cardsLimit) {
+                    lblHelp.setText(String.format("Wähle %d Karten", cardsLimit - cards.size()));
                 }
             });
         }
@@ -103,7 +100,7 @@ public class CardpollController {
 
     private void btnContinueAction(ActionEvent event) {
         try {
-            new GameController(stage, cards, cardsSelected);
+            new GameController(stage);
         }
         catch (Exception ex) {
             // TODO: Catch exception
