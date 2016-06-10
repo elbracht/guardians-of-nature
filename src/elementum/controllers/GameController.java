@@ -78,10 +78,9 @@ public class GameController implements Observer {
             if (cardActive != null) {
                 card.setCursor(CursorLoader.getAttack());
             }
-        });
-
-        card.setOnMouseExited(t -> {
-            card.setCursor(Cursor.DEFAULT);
+            else {
+                card.setCursor(CursorLoader.getDefault());
+            }
         });
 
         // Events for click on computer card
@@ -104,6 +103,8 @@ public class GameController implements Observer {
                     imageView.setEffect(colorAdjust);
                     imageView.setDisable(true);
                 }
+
+                referee.setPlayersTurn(false);
             }
         });
     }
@@ -143,6 +144,8 @@ public class GameController implements Observer {
     }
 
     private void unselectAllCards() {
+        cardActive = null;
+
         for (Node card : stage.getScene().lookup("*").lookupAll(".card")) {
             card.getStyleClass().remove("card-selected");
         }
@@ -168,6 +171,7 @@ public class GameController implements Observer {
             lblInfo.setText("Spieler ist am Zug.");
         }
         else {
+            unselectAllCards();
             lblInfo.setText("Computer ist am Zug.");
         }
     }
