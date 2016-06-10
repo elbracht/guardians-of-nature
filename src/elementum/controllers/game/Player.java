@@ -3,26 +3,37 @@ package elementum.controllers.game;
 import elementum.models.Card;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Hashtable;
 
 public class Player {
     public static final int CARD_LIMIT = 3;
 
-    private ArrayList<Card> cards;
+    private Hashtable<Card, Integer> cards;
 
     public Player() {
-        cards = new ArrayList<>();
+        cards = new Hashtable<>();
     }
 
-    public void addCard(Card card) {
-        cards.add(card);
+    public void addCard(int cardId, Card card) {
+        cards.put(card, cardId);
     }
 
     public void removeCard(Card card) {
         cards.remove(card);
     }
 
+    public void updateCard(int cardId, Card card) {
+        cards.replace(card, cardId);
+    }
+
+    public int getId(Card card) {
+        return cards.get(card);
+    }
+
     public Card getCard(int index) {
-        return cards.get(index);
+        ArrayList<Card> keys = Collections.list(cards.keys());
+        return keys.get(index);
     }
 
     public int getCardsCount() {
@@ -30,7 +41,8 @@ public class Player {
     }
 
     public Boolean containCard(Card card) {
-        return cards.contains(card);
+        ArrayList<Card> keys = Collections.list(cards.keys());
+        return keys.contains(card);
     }
 
     public void attack(int index, int damage) {

@@ -78,11 +78,11 @@ public class CardpollController {
                 else {
                     // Add Card
                     if (player.getCardsCount() < player.CARD_LIMIT - 1) {
-                        player.addCard(cards.getCards().get(imageId));
+                        player.addCard(0, cards.getCards().get(imageId));
                         styleClass.add("card-selected");
                     }
                     else if (player.getCardsCount() == player.CARD_LIMIT - 1) {
-                        player.addCard(cards.getCards().get(imageId));
+                        player.addCard(0, cards.getCards().get(imageId));
                         styleClass.add("card-selected");
                         btnContinue.setDisable(false);
                     }
@@ -109,6 +109,7 @@ public class CardpollController {
             new GameController(stage, computer, player);
         }
         catch (Exception ex) {
+            System.out.println(ex.getMessage());
             // TODO: Catch exception
         }
     }
@@ -118,6 +119,7 @@ public class CardpollController {
             new MainController(stage);
         }
         catch (Exception ex) {
+            System.out.println(ex.getMessage());
             // TODO: Catch exception
         }
     }

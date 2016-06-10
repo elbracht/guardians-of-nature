@@ -18,9 +18,30 @@ public class Computer extends Player{
 
         if (super.getCardsCount() < super.CARD_LIMIT) {
             if (!super.containCard(randomCard)) {
-                super.addCard(randomCard);
+                super.addCard(0, randomCard);
             }
             addRandomCards(allCards);
         }
+    }
+
+    public Card makeTurn(Player player) {
+        // 1. Choose a card for attack
+        Card computerCard = chooseComputerCard(player);
+
+        // 2. Choose a card to attack
+        Card playerCard = choosePlayerCard(player);
+
+        // 3. Attack
+        player.attack(playerCard, computerCard.getAttack());
+
+        return playerCard;
+    }
+
+    public Card chooseComputerCard(Player player) {
+        return super.getCard(0);
+    }
+
+    public Card choosePlayerCard(Player player) {
+        return player.getCard(0);
     }
 }

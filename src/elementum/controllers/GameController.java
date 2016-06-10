@@ -50,46 +50,39 @@ public class GameController implements Observer {
         Button btnBack = (Button)scene.lookup("#btnBack");
         btnBack.setOnAction(this::btnBackAction);
 
+        // Add player and computer cards
+        for (int i = 0; i < 3; i++) {
+            addPlayerCard(i);
+            addComputerCard(i);
+        }
+
         // Referee
         referee = new Referee();
         referee.addObserver(this);
-        referee.setPlayersTurn(Math.random() < 0.5);
-
-        // Cards
-        for (Node card : scene.lookup("*").lookupAll(".card")) {
-            int cardId = Integer.parseInt(card.getId());
-            if (cardId < 3) {
-                initPlayerCard(card, cardId);
-            }
-            else {
-                initComputerCard(card, cardId - 3);
-            }
-        }
+        referee.setPlayersTurn(false);//Math.random() < 0.5);
     }
 
-    private void initComputerCard(Node card, int cardId) {
-        ImageView cardImageView = (ImageView)card;
-        BufferedImage cardImage = computer.getCard(cardId).getImage();
-        cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
+    private void addComputerCard(int id) {
+        Card card = computer.getCard(id);
+        computer.updateCard(id + 3, card);
+
+        BufferedImage image = card.getImage();
+        ImageView imageView = getImageView(computer.getId(card));
+        imageView.setImage(SwingFXUtils.toFXImage(image, null));
 
         // Cursor
-        card.setOnMouseEntered(t -> {
+        imageView.setOnMouseEntered(t -> {
             if (cardActive != null) {
-                card.setCursor(CursorLoader.getAttack());
+                imageView.setCursor(CursorLoader.getAttack());
             }
             else {
-                card.setCursor(CursorLoader.getDefault());
+                imageView.setCursor(CursorLoader.getDefault());
             }
         });
 
         // Events for click on computer card
-        card.setOnMouseClicked(t -> {
+        imageView.setOnMouseClicked(t -> {
             if (cardActive != null) {
-                // Get id from ImageView
-                ImageView imageView = (ImageView)t.getSource();
-                String imageViewId = imageView.getId();
-                int id = Integer.parseInt(imageViewId) - 3;
-
                 // Attack computer
                 computer.attack(id, cardActive.getAttack());
 
@@ -107,24 +100,26 @@ public class GameController implements Observer {
         });
     }
 
-    private void initPlayerCard(Node card, int cardId) {
-        ImageView cardImageView = (ImageView)card;
-        BufferedImage cardImage = player.getCard(cardId).getImage();
-        cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
+    private void addPlayerCard(int id) {
+        Card card = player.getCard(id);
+        player.updateCard(id, card);
 
-        card.setOnMouseEntered(t -> {
+        BufferedImage image = player.getCard(id).getImage();
+        ImageView imageView = getImageView(player.getId(card));
+        imageView.setImage(SwingFXUtils.toFXImage(image, null));
+
+        imageView.setOnMouseEntered(t -> {
             if (referee.isPlayersTurn()) {
-                card.setCursor(CursorLoader.getSelect());
+                imageView.setCursor(CursorLoader.getSelect());
             }
             else {
-                card.setCursor(CursorLoader.getDefault());
+                imageView.setCursor(CursorLoader.getDefault());
             }
         });
 
         // Event for click on player card
-        card.setOnMouseClicked(t -> {
+        imageView.setOnMouseClicked(t -> {
             if (referee.isPlayersTurn()) {
-                ImageView imageView = (ImageView) t.getSource();
                 ObservableList styleClass = imageView.getStyleClass();
 
                 if (styleClass.contains("card-selected")) {
@@ -165,6 +160,10 @@ public class GameController implements Observer {
         }
     }
 
+    private ImageView getImageView(int id) {
+        return (ImageView)stage.getScene().lookup(String.format("#%s", id));
+    }
+
     /**
      * Observer
      */
@@ -177,6 +176,20 @@ public class GameController implements Observer {
         else {
             unselectAllCards();
             lblInfo.setText("Computer ist am Zug.");
+
+            // Attack player
+            Card card = computer.makeTurn(player);
+
+            // Add new image to ImageView
+            if (card.getHealth() <= 0) {
+                addCard(card, getImageView(player.getId(card)), true);
+            }
+            else {
+                addCard(card, getImageView(player.getId(card)), false);
+            }
+
+            // Change turn
+            referee.setPlayersTurn(true);
         }
     }
 
