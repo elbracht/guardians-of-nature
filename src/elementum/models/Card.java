@@ -80,7 +80,7 @@ public class Card {
 
         g2d.drawImage(getImageDefault(), 0, 0, null);
         g2d.setPaint(getColor());
-        g2d.setFont(new FontLoader().getOpenSans(FontLoader.FontType.BOLD, 60.0f));
+        g2d.setFont(FontLoader.getOpenSans(FontLoader.FontType.BOLD, 60.0f));
 
         // Draw name
         FontMetrics fm = g2d.getFontMetrics();

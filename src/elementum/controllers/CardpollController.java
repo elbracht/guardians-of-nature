@@ -30,7 +30,7 @@ public class CardpollController {
         this.cardsSelected = new ArrayList<>();
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/cardpoll.fxml"));
-        root.setCursor(new CursorLoader().getDefault());
+        root.setCursor(CursorLoader.getDefault());
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
@@ -58,7 +58,7 @@ public class CardpollController {
             cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
 
             // Cursor
-            card.setCursor(new CursorLoader().getSelect());
+            card.setCursor(CursorLoader.getSelect());
 
             // Add event
             card.setOnMouseClicked(t -> {

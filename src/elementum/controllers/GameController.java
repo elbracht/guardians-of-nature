@@ -35,7 +35,7 @@ public class GameController {
         this.computer = new Computer();
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/game.fxml"));
-        root.setCursor(new CursorLoader().getDefault());
+        root.setCursor(CursorLoader.getDefault());
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
@@ -70,7 +70,7 @@ public class GameController {
         // Cursor
         card.setOnMouseEntered(t -> {
             if (cardActive != null) {
-                card.setCursor(new CursorLoader().getAttack());
+                card.setCursor(CursorLoader.getAttack());
             }
         });
 
@@ -108,7 +108,7 @@ public class GameController {
         cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
 
         // Cursor
-        card.setCursor(new CursorLoader().getSelect());
+        card.setCursor(CursorLoader.getSelect());
 
         // Event for click on player card
         card.setOnMouseClicked(t -> {
