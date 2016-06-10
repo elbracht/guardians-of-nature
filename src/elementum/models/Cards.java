@@ -4,15 +4,21 @@ import javax.imageio.ImageIO;
 import java.util.ArrayList;
 
 public class Cards {
-    public static ArrayList<Card> getAllCards() {
-        ArrayList<Card> cards = new ArrayList<>();
+    private ArrayList<Card> cards;
+
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
+    public Cards() {
+        cards = new ArrayList<>();
 
         try {
             Card bear = new Card();
             bear.setName("Bär");
             bear.setAttack(10);
             bear.setHealth(10);
-            bear.setImageDefault(ImageIO.read(Cards.class.getResourceAsStream("/elementum/assets/cards/bear.png")));
+            bear.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/bear.png")));
             bear.setColor("#573c21");
             bear.paint();
 
@@ -20,7 +26,7 @@ public class Cards {
             bird.setName("Vogel");
             bird.setAttack(10);
             bird.setHealth(10);
-            bird.setImageDefault(ImageIO.read(Cards.class.getResourceAsStream("/elementum/assets/cards/bird.png")));
+            bird.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/bird.png")));
             bird.setColor("#d3811f");
             bird.paint();
 
@@ -28,7 +34,7 @@ public class Cards {
             fox.setName("Fuchs");
             fox.setAttack(10);
             fox.setHealth(10);
-            fox.setImageDefault(ImageIO.read(Cards.class.getResourceAsStream("/elementum/assets/cards/fox.png")));
+            fox.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/fox.png")));
             fox.setColor("#e5751f");
             fox.paint();
 
@@ -36,7 +42,7 @@ public class Cards {
             giraffe.setName("Giraffe");
             giraffe.setAttack(10);
             giraffe.setHealth(10);
-            giraffe.setImageDefault(ImageIO.read(Cards.class.getResourceAsStream("/elementum/assets/cards/giraffe.png")));
+            giraffe.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/giraffe.png")));
             giraffe.setColor("#fdb72b");
             giraffe.paint();
 
@@ -44,7 +50,7 @@ public class Cards {
             monkey.setName("Affe");
             monkey.setAttack(10);
             monkey.setHealth(10);
-            monkey.setImageDefault(ImageIO.read(Cards.class.getResourceAsStream("/elementum/assets/cards/monkey.png")));
+            monkey.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/monkey.png")));
             monkey.setColor("#392214");
             monkey.paint();
 
@@ -52,7 +58,7 @@ public class Cards {
             mouse.setName("Maus");
             mouse.setAttack(10);
             mouse.setHealth(10);
-            mouse.setImageDefault(ImageIO.read(Cards.class.getResourceAsStream("/elementum/assets/cards/mouse.png")));
+            mouse.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/mouse.png")));
             mouse.setColor("#6f6f6f");
             mouse.paint();
 
@@ -60,7 +66,7 @@ public class Cards {
             owl.setName("Eule");
             owl.setAttack(10);
             owl.setHealth(10);
-            owl.setImageDefault(ImageIO.read(Cards.class.getResourceAsStream("/elementum/assets/cards/owl.png")));
+            owl.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/owl.png")));
             owl.setColor("#75554a");
             owl.paint();
 
@@ -68,7 +74,7 @@ public class Cards {
             panda.setName("Panda");
             panda.setAttack(10);
             panda.setHealth(10);
-            panda.setImageDefault(ImageIO.read(Cards.class.getResourceAsStream("/elementum/assets/cards/panda.png")));
+            panda.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/panda.png")));
             panda.setColor("#000000");
             panda.paint();
 
@@ -76,7 +82,7 @@ public class Cards {
             pig.setName("Schwein");
             pig.setAttack(10);
             pig.setHealth(10);
-            pig.setImageDefault(ImageIO.read(Cards.class.getResourceAsStream("/elementum/assets/cards/pig.png")));
+            pig.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/pig.png")));
             pig.setColor("#e68c8c");
             pig.paint();
 
@@ -84,7 +90,7 @@ public class Cards {
             pufferfish.setName("Kugelfisch");
             pufferfish.setAttack(10);
             pufferfish.setHealth(10);
-            pufferfish.setImageDefault(ImageIO.read(Cards.class.getResourceAsStream("/elementum/assets/cards/pufferfish.png")));
+            pufferfish.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/pufferfish.png")));
             pufferfish.setColor("#7f6669");
             pufferfish.paint();
 
@@ -92,7 +98,7 @@ public class Cards {
             tiger.setName("Tiger");
             tiger.setAttack(10);
             tiger.setHealth(10);
-            tiger.setImageDefault(ImageIO.read(Cards.class.getResourceAsStream("/elementum/assets/cards/tiger.png")));
+            tiger.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/tiger.png")));
             tiger.setColor("#fdaf2a");
             tiger.paint();
 
@@ -100,7 +106,7 @@ public class Cards {
             turtle.setName("Schildkröte");
             turtle.setAttack(10);
             turtle.setHealth(10);
-            turtle.setImageDefault(ImageIO.read(Cards.class.getResourceAsStream("/elementum/assets/cards/turtle.png")));
+            turtle.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/turtle.png")));
             turtle.setColor("#708a18");
             turtle.paint();
 
@@ -120,7 +126,5 @@ public class Cards {
         catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-
-        return cards;
     }
 }

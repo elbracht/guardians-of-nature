@@ -7,26 +7,26 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Computer {
-    private ArrayList<Card> cards = new ArrayList<>();
+    private ArrayList<Card> cardArray = new ArrayList<>();
 
     public Card getCard(int index) {
-        return cards.get(index);
+        return cardArray.get(index);
     }
 
-    public Computer() throws Exception {
-        addRandomCards();
+    public Computer(Cards cards) throws Exception {
+        addRandomCards(cards);
     }
 
-    private void addRandomCards() {
+    private void addRandomCards(Cards cards) {
         Random random = new Random();
-        ArrayList<Card> allCards = Cards.getAllCards();
+        ArrayList<Card> allCards = cards.getCards();
         Card randomCard = allCards.get(random.nextInt(allCards.size()));
 
-        if (cards.size() < 3) {
-            if (!cards.contains(randomCard)) {
-                cards.add(randomCard);
+        if (cardArray.size() < 3) {
+            if (!cardArray.contains(randomCard)) {
+                cardArray.add(randomCard);
             }
-            addRandomCards();
+            addRandomCards(cards);
         }
     }
 }

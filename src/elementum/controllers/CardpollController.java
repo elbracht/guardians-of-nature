@@ -18,12 +18,12 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 public class CardpollController {
     private Stage stage;
+    private Cards cards = new Cards();
     private Player player = new Player();
-    private Computer computer = new Computer();
+    private Computer computer = new Computer(cards);
 
     public CardpollController(Stage stage) throws Exception {
         this.stage = stage;
@@ -53,7 +53,7 @@ public class CardpollController {
             // Add images
             int cardId = Integer.parseInt(card.getId());
             ImageView cardImageView = (ImageView)card;
-            BufferedImage cardImage = Cards.getAllCards().get(cardId).getImage();
+            BufferedImage cardImage = cards.getCards().get(cardId).getImage();
             cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
 
             // Cursor
@@ -67,18 +67,18 @@ public class CardpollController {
 
                 if (styleClass.contains("card-selected")) {
                     // Remove Card
-                    player.removeCard(Cards.getAllCards().get(imageId));
+                    player.removeCard(cards.getCards().get(imageId));
                     styleClass.remove("card-selected");
                     btnContinue.setDisable(true);
                 }
                 else {
                     // Add Card
                     if (player.getCardsCount() < player.CARD_LIMIT - 1) {
-                        player.addCard(Cards.getAllCards().get(imageId));
+                        player.addCard(cards.getCards().get(imageId));
                         styleClass.add("card-selected");
                     }
                     else if (player.getCardsCount() == player.CARD_LIMIT - 1) {
-                        player.addCard(Cards.getAllCards().get(imageId));
+                        player.addCard(cards.getCards().get(imageId));
                         styleClass.add("card-selected");
                         btnContinue.setDisable(false);
                     }
