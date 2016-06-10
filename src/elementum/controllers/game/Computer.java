@@ -9,8 +9,8 @@ import java.util.Random;
 public class Computer {
     private ArrayList<Card> cards = new ArrayList<>();
 
-    public ArrayList<Card> getCards() {
-        return cards;
+    public Card getCard(int index) {
+        return cards.get(index);
     }
 
     public Computer() throws Exception {

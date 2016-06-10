@@ -1,9 +1,9 @@
 package elementum.controllers;
 
+import elementum.controllers.game.Player;
 import elementum.controllers.utils.CursorLoader;
 import elementum.controllers.game.Computer;
 import elementum.models.Card;
-import elementum.models.Cards;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -21,11 +21,14 @@ import java.awt.image.BufferedImage;
 
 public class GameController {
     private Stage stage;
+    private Computer computer;
+    private Player player;
     private Card cardActive = null;
-    private Computer computer = new Computer();
 
-    public GameController(Stage stage) throws Exception {
+    public GameController(Stage stage, Computer computer, Player player) throws Exception {
         this.stage = stage;
+        this.computer = computer;
+        this.player = player;
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/game.fxml"));
         root.setCursor(CursorLoader.getDefault());
@@ -57,7 +60,7 @@ public class GameController {
 
     private void initComputerCard(Node card, int cardId) {
         ImageView cardImageView = (ImageView)card;
-        BufferedImage cardImage = computer.getCards().get(cardId).getImage();
+        BufferedImage cardImage = computer.getCard(cardId).getImage();
         cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
 
         // Cursor
@@ -77,7 +80,7 @@ public class GameController {
                 ImageView imageView = (ImageView)t.getSource();
                 int id = Integer.parseInt(imageView.getId()) - 3;
 
-                Card computerCard = computer.getCards().get(id);
+                Card computerCard = computer.getCard(id);
                 computerCard.setHealth(computerCard.getHealth() - cardActive.getAttack());
                 computerCard.paint();
 
@@ -97,7 +100,7 @@ public class GameController {
 
     private void initPlayerCard(Node card, int cardId) {
         ImageView cardImageView = (ImageView)card;
-        BufferedImage cardImage = Cards.getAllCards().get(cardId).getImage();
+        BufferedImage cardImage = player.getCard(cardId).getImage();
         cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
 
         // Cursor
@@ -116,7 +119,7 @@ public class GameController {
             }
             else {
                 unselectAllCards();
-                cardActive = Cards.getAllCards().get(Integer.parseInt(imageView.getId()));
+                cardActive = player.getCard(Integer.parseInt(imageView.getId()));
                 styleClass.add("card-selected");
             }
         });
