@@ -30,7 +30,7 @@ public class CardpollController {
 
         cards = new Cards();
         player = new Player();
-        computer = new Computer(cards);
+        computer = new Computer(new Cards());
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/cardpoll.fxml"));
         root.setCursor(CursorLoader.getDefault());
