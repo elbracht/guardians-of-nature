@@ -57,7 +57,7 @@ public class GameController implements Observer {
         }
 
         // Referee
-        referee = new Referee();
+        referee = new Referee(player, computer);
         referee.addObserver(this);
         referee.setPlayersTurn(false);//Math.random() < 0.5);
     }
@@ -170,27 +170,32 @@ public class GameController implements Observer {
     public void update(Observable obs, Object obj) {
         Label lblInfo = (Label)stage.getScene().lookup("#lblInfo");
 
-        if (referee.isPlayersTurn()) {
-            lblInfo.setText("Spieler ist am Zug.");
+        if (!referee.isGameOver()) {
+            if (referee.isPlayersTurn()) {
+                lblInfo.setText("Spieler ist am Zug.");
+            } else {
+                unselectAllCards();
+                lblInfo.setText("Computer ist am Zug.");
+
+                // Attack player
+                Card card = computer.makeTurn(player);
+
+                if (card != null) {
+                    // Add new image to ImageView
+                    if (card.getHealth() <= 0) {
+                        addCard(card, getImageView(player.getId(card)), true);
+                    } else {
+                        addCard(card, getImageView(player.getId(card)), false);
+                    }
+
+                    // Change turn
+                    referee.setPlayersTurn(true);
+                }
+            }
         }
         else {
             unselectAllCards();
-            lblInfo.setText("Computer ist am Zug.");
-
-            // Attack player
-            Card card = computer.makeTurn(player);
-
-            if (card != null) {
-                // Add new image to ImageView
-                if (card.getHealth() <= 0) {
-                    addCard(card, getImageView(player.getId(card)), true);
-                } else {
-                    addCard(card, getImageView(player.getId(card)), false);
-                }
-
-                // Change turn
-                referee.setPlayersTurn(true);
-            }
+            lblInfo.setText("Spiel beendet.");
         }
     }
 
