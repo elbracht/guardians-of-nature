@@ -5,7 +5,9 @@ import elementum.controllers.game.Referee;
 import elementum.controllers.utils.CursorLoader;
 import elementum.controllers.game.Computer;
 import elementum.models.Card;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +23,8 @@ import javafx.stage.Stage;
 import java.awt.image.BufferedImage;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.concurrent.Exchanger;
+import java.util.concurrent.ThreadFactory;
 
 public class GameController implements Observer {
     private Stage stage;
@@ -177,20 +181,61 @@ public class GameController implements Observer {
                 unselectAllCards();
                 lblInfo.setText("Computer ist am Zug.");
 
-                // Attack player
-                Card card = computer.makeTurn(player);
+                Thread animationThread = new Thread(() -> {
+                    try {
+                        Thread.sleep(1000);
 
-                if (card != null) {
-                    // Add new image to ImageView
-                    if (card.getHealth() <= 0) {
-                        addCard(card, getImageView(player.getId(card)), true);
-                    } else {
-                        addCard(card, getImageView(player.getId(card)), false);
+                        // Attack player
+                        Card[] cards = computer.makeTurn(player);
+                        Card attackCard = cards[0];
+                        Card defenseCard = cards[1];
+
+                        if (cards != null) {
+                            Platform.runLater(() -> {
+                                // Select computer card
+                                ImageView imageView = getImageView(computer.getId(attackCard));
+                                ObservableList styleClass = imageView.getStyleClass();
+                                styleClass.add("card-selected");
+                            });
+
+                            Thread.sleep(500);
+
+                            Platform.runLater(() -> {
+                                // Select player card
+                                ImageView imageView = getImageView(player.getId(defenseCard));
+                                ObservableList styleClass = imageView.getStyleClass();
+                                styleClass.add("card-selected");
+                            });
+
+                            Thread.sleep(200);
+
+                            Platform.runLater(() -> {
+                                // Add new image to ImageView
+                                if (defenseCard.getHealth() <= 0) {
+                                    addCard(defenseCard, getImageView(player.getId(defenseCard)), true);
+                                } else {
+                                    addCard(defenseCard, getImageView(player.getId(defenseCard)), false);
+                                }
+                            });
+
+                            Thread.sleep(500);
+
+                            Platform.runLater(() -> {
+                                // Change turn
+                                referee.setPlayersTurn(true);
+
+                                // Unselect all cards
+                                unselectAllCards();
+                            });
+                        }
                     }
+                    catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                        // TODO: Catch exception
+                    }
+                });
 
-                    // Change turn
-                    referee.setPlayersTurn(true);
-                }
+                animationThread.start();
             }
         }
         else {

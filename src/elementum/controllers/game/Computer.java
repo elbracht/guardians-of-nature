@@ -24,7 +24,7 @@ public class Computer extends Player{
         }
     }
 
-    public Card makeTurn(Player player) {
+    public Card[] makeTurn(Player player) {
         int[] cardIds = chooseCards(player);
 
         if (cardIds != null) {
@@ -33,7 +33,7 @@ public class Computer extends Player{
 
             player.attack(defenseCard, attackCard.getAttack());
 
-            return defenseCard;
+            return new Card[] { attackCard, defenseCard };
         }
 
         return null;
