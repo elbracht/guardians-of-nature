@@ -16,32 +16,62 @@ public class Computer extends Player{
         Random random = new Random();
         Card randomCard = allCards.getCards().get(random.nextInt(allCards.getCards().size()));
 
-        if (super.getCardsCount() < super.CARD_LIMIT) {
-            if (!super.containCard(randomCard)) {
-                super.addCard(0, randomCard);
+        if (getCardsCount() < CARD_LIMIT) {
+            if (!containCard(randomCard)) {
+                addCard(0, randomCard);
             }
             addRandomCards(allCards);
         }
     }
 
     public Card makeTurn(Player player) {
-        // 1. Choose a card for attack
-        Card computerCard = chooseComputerCard(player);
+        int[] cardIds = chooseCards(player);
 
-        // 2. Choose a card to attack
-        Card playerCard = choosePlayerCard(player);
+        if (cardIds != null) {
+            Card attackCard = getCard(cardIds[0]);
+            Card defenseCard = player.getCard(cardIds[1]);
 
-        // 3. Attack
-        player.attack(playerCard, computerCard.getAttack());
+            player.attack(defenseCard, attackCard.getAttack());
 
-        return playerCard;
+            return defenseCard;
+        }
+
+        return null;
     }
 
-    public Card chooseComputerCard(Player player) {
-        return super.getCard(0);
+    public int[] chooseCards(Player player) {
+        for (int i = 0; i < getCards().length; i++) {
+            Card card = getCard(i);
+
+            if (card.getHealth() > 0) {
+                int[] depth = createAttackTree(card, player.getCards());
+
+                for (int j = 0; j < depth.length; j++) {
+                    if (depth[j] > 0) {
+                        return new int[] { i, j };
+                    }
+                }
+            }
+        }
+
+        return null;
     }
 
-    public Card choosePlayerCard(Player player) {
-        return player.getCard(0);
+    private int[] createAttackTree(Card attackCard, Card[] defenseCards) {
+        int[] depth = new int[] { 0, 0, 0 };
+        for (int i = 0; i < defenseCards.length; i++) {
+            depth[i] = createAttackTree(depth[i], attackCard.getAttack(), defenseCards[i].getHealth());
+        }
+
+        return depth;
+    }
+
+    private int createAttackTree(int depth, int attack, int health) {
+        if (health > 0) {
+            depth += 1;
+            depth = createAttackTree(depth, attack, health - attack);
+        }
+
+        return depth;
     }
 }

@@ -180,16 +180,17 @@ public class GameController implements Observer {
             // Attack player
             Card card = computer.makeTurn(player);
 
-            // Add new image to ImageView
-            if (card.getHealth() <= 0) {
-                addCard(card, getImageView(player.getId(card)), true);
-            }
-            else {
-                addCard(card, getImageView(player.getId(card)), false);
-            }
+            if (card != null) {
+                // Add new image to ImageView
+                if (card.getHealth() <= 0) {
+                    addCard(card, getImageView(player.getId(card)), true);
+                } else {
+                    addCard(card, getImageView(player.getId(card)), false);
+                }
 
-            // Change turn
-            referee.setPlayersTurn(true);
+                // Change turn
+                referee.setPlayersTurn(true);
+            }
         }
     }
 

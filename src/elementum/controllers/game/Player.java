@@ -36,6 +36,11 @@ public class Player {
         return keys.get(index);
     }
 
+    public Card[] getCards() {
+        ArrayList<Card> keys = Collections.list(cards.keys());
+        return keys.toArray(new Card[0]);
+    }
+
     public int getCardsCount() {
         return cards.size();
     }
