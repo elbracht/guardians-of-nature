@@ -7,7 +7,6 @@ import elementum.controllers.game.Computer;
 import elementum.models.Card;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Task;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -23,8 +22,6 @@ import javafx.stage.Stage;
 import java.awt.image.BufferedImage;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.concurrent.Exchanger;
-import java.util.concurrent.ThreadFactory;
 
 public class GameController implements Observer {
     private Stage stage;
@@ -87,19 +84,47 @@ public class GameController implements Observer {
         // Events for click on computer card
         imageView.setOnMouseClicked(t -> {
             if (cardActive != null) {
-                // Attack computer
-                computer.attack(id, cardActive.getAttack());
+                Thread animationThread = new Thread(() -> {
+                    try {
+                        // Attack computer
+                        computer.attack(id, cardActive.getAttack());
 
-                // Add new image to ImageView
-                if (computer.getCard(id).getHealth() <= 0) {
-                    addCard(computer.getCard(id), imageView, true);
-                }
-                else {
-                    addCard(computer.getCard(id), imageView, false);
-                }
+                        Platform.runLater(() -> {
+                            // Select computer card
+                            ImageView computerImageView = getImageView(id + 3);
+                            ObservableList styleClass = computerImageView.getStyleClass();
+                            styleClass.add("card-selected");
+                        });
 
-                // Change turn
-                referee.setPlayersTurn(false);
+                        Thread.sleep(300);
+
+                        Platform.runLater(() -> {
+                            // Add new image to ImageView
+                            if (computer.getCard(id).getHealth() <= 0) {
+                                addCard(computer.getCard(id), imageView, true);
+                            }
+                            else {
+                                addCard(computer.getCard(id), imageView, false);
+                            }
+                        });
+
+                        Thread.sleep(500);
+
+                        Platform.runLater(() -> {
+                            // Change turn
+                            referee.setPlayersTurn(false);
+
+                            // Unselect all cards
+                            unselectAllCards();
+                        });
+                    }
+                    catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                        // TODO: Catch exception
+                    }
+                });
+
+                animationThread.start();
             }
         });
     }
@@ -183,7 +208,7 @@ public class GameController implements Observer {
 
                 Thread animationThread = new Thread(() -> {
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(1200);
 
                         // Attack player
                         Card[] cards = computer.makeTurn(player);
@@ -207,7 +232,7 @@ public class GameController implements Observer {
                                 styleClass.add("card-selected");
                             });
 
-                            Thread.sleep(200);
+                            Thread.sleep(300);
 
                             Platform.runLater(() -> {
                                 // Add new image to ImageView
