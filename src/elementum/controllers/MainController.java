@@ -1,22 +1,23 @@
 package elementum.controllers;
 
+import elementum.controllers.utils.CursorLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.*;
 import javafx.scene.control.Button;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class mainController {
+public class MainController {
     private Stage stage;
 
-    public mainController(Stage stage) throws Exception {
+    public MainController(Stage stage) throws Exception {
         this.stage = stage;
 
-        Parent root = FXMLLoader.load(getClass().getResource("../views/main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/main.fxml"));
+        root.setCursor(CursorLoader.getDefault());
+
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("../assets/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
 
         stage.setTitle("Elementum");
         stage.setResizable(false);
@@ -34,7 +35,7 @@ public class mainController {
 
     private void btnStartAction(ActionEvent event) {
         try {
-            new cardpollController(stage);
+            new CardpollController(stage);
         }
         catch (Exception ex) {
             // TODO: Catch exception
