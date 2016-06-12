@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<de_DE>
+    <cards>
+        <bear>Bär</bear>
+        <bird>Vogel</bird>
+        <fox>Fuchs</fox>
+        <giraffe>Giraffe</giraffe>
+        <monkey>Affe</monkey>
+        <mouse>Maus</mouse>
+        <owl>Eule</owl>
+        <panda>Panda</panda>
+        <pig>Schwein</pig>
+        <pufferfish>Kugelfisch</pufferfish>
+        <tiger>Tiger</tiger>
+        <turtle>Schildkröte</turtle>
+    </cards>
+    <ui>
+        <main-button-start>START</main-button-start>
+        <main-button-exit>BEENDEN</main-button-exit>
+        <cardpoll-button-continue>WEITER</cardpoll-button-continue>
+        <cardpoll-button-back>ZURÜCK</cardpoll-button-back>
+        <cardpoll-label-help-single>Wähle 1 Karte</cardpoll-label-help-single>
+        <cardpoll-label-help>Wähle %d Karten</cardpoll-label-help>
+        <game-button-help>HILFE</game-button-help>
+        <game-button-back>ZURÜCK</game-button-back>
+        <game-label-player>Spieler</game-label-player>
+        <game-label-computer>Computer</game-label-computer>
+        <game-label-help-player>Spieler ist am Zug.</game-label-help-player>
+        <game-label-help-computer>Computer ist am Zug.</game-label-help-computer>
+        <gameover-button-back>ZURÜCK</gameover-button-back>
+        <gameover-label-title>Spiel vorbei</gameover-label-title>
+        <gameover-label-winner-player>Sie haben gewonnen.</gameover-label-winner-player>
+        <gameover-label-winner-computer>Der Computer hat gewonnen.</gameover-label-winner-computer>
+        <dialog-button-yes>JA</dialog-button-yes>
+        <dialog-button-no>NEIN</dialog-button-no>
+        <dialog-label-text>Möchten Sie das Spiel wirklich beenden?</dialog-label-text>
+    </ui>
+</de_DE>

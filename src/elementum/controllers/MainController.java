@@ -1,12 +1,15 @@
 package elementum.controllers;
 
 import elementum.controllers.utils.CursorLoader;
+import elementum.controllers.utils.Locale;
 import elementum.controllers.utils.Logging;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.util.logging.Level;
@@ -17,15 +20,17 @@ import java.util.logging.Level;
 public class MainController {
     private Stage stage;
     private Logging logging;
+    private Locale locale;
 
     /**
      * Constructor
      * @param stage Stage
      * @throws Exception
      */
-    public MainController(Stage stage, Logging logging) throws Exception {
+    public MainController(Stage stage, Logging logging, Locale locale) throws Exception {
         this.stage = stage;
         this.logging = logging;
+        this.locale = locale;
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/main.fxml"));
         root.setCursor(CursorLoader.getDefault());
@@ -41,11 +46,61 @@ public class MainController {
 
         // Start button
         Button btnStart = (Button)scene.lookup("#btnStart");
+        btnStart.setText(locale.getString("ui", "main-button-start"));
         btnStart.setOnAction(this::btnStartAction);
 
         // Exit button
         Button btnExit = (Button)scene.lookup("#btnExit");
+        btnExit.setText(locale.getString("ui", "main-button-exit"));
         btnExit.setOnAction(this::btnExitAction);
+
+        // Language german
+        ImageView btnGerman = (ImageView)scene.lookup("#language-de");
+
+        if (locale.getLanguage() == "de_DE") {
+            ObservableList styleClass = btnGerman.getStyleClass();
+            styleClass.add("card-selected");
+        }
+
+        btnGerman.setOnMouseEntered(event -> {
+            if (locale.getLanguage() != "de_DE") {
+                btnGerman.setCursor(CursorLoader.getSelect());
+            }
+        });
+
+        btnGerman.setOnMouseClicked(event -> {
+            try {
+                new MainController(stage, logging, new Locale("de_DE"));
+            }
+            catch (Exception ex) {
+                logging.log(Level.SEVERE, "Exception", ex);
+            }
+        });
+
+        // Language english
+        ImageView btnEnglish = (ImageView)scene.lookup("#language-en");
+
+        if (locale.getLanguage() == "en_US") {
+            ObservableList styleClass = btnEnglish.getStyleClass();
+            styleClass.add("card-selected");
+        }
+
+        btnEnglish.setOnMouseEntered(event -> {
+            if (locale.getLanguage() != "en_US") {
+                btnEnglish.setCursor(CursorLoader.getSelect());
+            }
+        });
+
+        btnEnglish.setOnMouseClicked(event -> {
+            try {
+                new MainController(stage, logging, new Locale("en_US"));
+            }
+            catch (Exception ex) {
+                logging.log(Level.SEVERE, "Exception", ex);
+            }
+        });
+
+
     }
 
     /**
@@ -54,7 +109,7 @@ public class MainController {
      */
     private void btnStartAction(ActionEvent event) {
         try {
-            new CardpollController(stage, logging);
+            new CardpollController(stage, logging, locale);
         }
         catch (Exception ex) {
             logging.log(Level.SEVERE, "Exception", ex);

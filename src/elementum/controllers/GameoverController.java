@@ -2,6 +2,7 @@ package elementum.controllers;
 
 import elementum.controllers.game.Referee;
 import elementum.controllers.utils.CursorLoader;
+import elementum.controllers.utils.Locale;
 import elementum.controllers.utils.Logging;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,7 @@ import java.util.logging.Level;
 public class GameoverController {
     private Stage stage;
     private Logging logging;
+    private Locale locale;
 
     /**
      * Constructor
@@ -26,9 +28,10 @@ public class GameoverController {
      * @param referee Referee
      * @throws Exception
      */
-    public GameoverController(Stage stage, Logging logging, Referee referee) throws Exception {
+    public GameoverController(Stage stage, Logging logging, Locale locale, Referee referee) throws Exception {
         this.stage = stage;
         this.logging = logging;
+        this.locale = locale;
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/gameover.fxml"));
         root.setCursor(CursorLoader.getDefault());
@@ -38,17 +41,22 @@ public class GameoverController {
 
         stage.setScene(scene);
 
+        // Title label
+        Label lblTitle = (Label)scene.lookup("#lblTitle");
+        lblTitle.setText(locale.getString("ui", "gameover-label-title"));
+
         // Winner label
-        Label lblGameover = (Label)scene.lookup("#lblGameover");
+        Label lblWinner = (Label)scene.lookup("#lblWinner");
         if (referee.isComputerGameOver()) {
-            lblGameover.setText("Sie haben gewonnen.");
+            lblWinner.setText(locale.getString("ui", "gameover-label-winner-player"));
         }
         else if (referee.isPlayerGameOver()) {
-            lblGameover.setText("Der Computer hat gewonnen.");
+            lblWinner.setText(locale.getString("ui", "gameover-label-winner-computer"));
         }
 
         // Back button
         Button btnBack = (Button)scene.lookup("#btnBack");
+        btnBack.setText(locale.getString("ui", "gameover-button-back"));
         btnBack.setOnAction(this::btnBackAction);
     }
 
@@ -58,7 +66,7 @@ public class GameoverController {
      */
     private void btnBackAction(ActionEvent event) {
         try {
-            new MainController(stage, logging);
+            new MainController(stage, logging, locale);
         }
         catch (Exception ex) {
             logging.log(Level.SEVERE, "Exception", ex);

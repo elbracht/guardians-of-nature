@@ -1,6 +1,7 @@
 package elementum;
 
 import elementum.controllers.MainController;
+import elementum.controllers.utils.Locale;
 import elementum.controllers.utils.Logging;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -18,7 +19,7 @@ public class Main extends Application {
         Logging logging = new Logging();
 
         try {
-            new MainController(primaryStage, logging);
+            new MainController(primaryStage, logging, new Locale("de_DE"));
         }
         catch (Exception ex) {
             logging.log(Level.SEVERE, "Exception", ex);

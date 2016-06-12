@@ -3,6 +3,7 @@ package elementum.controllers;
 import elementum.controllers.game.Computer;
 import elementum.controllers.game.Player;
 import elementum.controllers.utils.CursorLoader;
+import elementum.controllers.utils.Locale;
 import elementum.controllers.utils.Logging;
 import elementum.models.Cards;
 import javafx.collections.ObservableList;
@@ -26,6 +27,7 @@ import java.util.logging.Level;
 public class CardpollController {
     private Stage stage;
     private Logging logging;
+    private Locale locale;
     private Cards cards;
     private Player player;
     private Computer computer;
@@ -35,13 +37,14 @@ public class CardpollController {
      * @param stage Stage
      * @throws Exception
      */
-    public CardpollController(Stage stage, Logging logging) throws Exception {
+    public CardpollController(Stage stage, Logging logging, Locale locale) throws Exception {
         this.stage = stage;
         this.logging = logging;
+        this.locale = locale;
 
-        cards = new Cards();
+        cards = new Cards(locale);
         player = new Player();
-        computer = new Computer();
+        computer = new Computer(new Cards(locale));
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/cardpoll.fxml"));
         root.setCursor(CursorLoader.getDefault());
@@ -53,15 +56,17 @@ public class CardpollController {
 
         // Continue button
         Button btnContinue = (Button)scene.lookup("#btnContinue");
+        btnContinue.setText(locale.getString("ui", "cardpoll-button-continue"));
         btnContinue.setOnAction(this::btnContinueAction);
 
         // Back button
         Button btnBack = (Button)scene.lookup("#btnBack");
+        btnBack.setText(locale.getString("ui", "cardpoll-button-back"));
         btnBack.setOnAction(this::btnBackAction);
 
         // Help label
         Label lblHelp = (Label)scene.lookup("#lblHelp");
-        lblHelp.setText(String.format("Wähle %d Karten", player.CARD_LIMIT - player.getCardsCount()));
+        lblHelp.setText(String.format(locale.getString("ui", "cardpoll-label-help"), player.CARD_LIMIT - player.getCardsCount()));
 
         // Cards
         for (Node imageView : scene.lookup("*").lookupAll(".card")) {
@@ -104,10 +109,10 @@ public class CardpollController {
                     lblHelp.setText("");
                 }
                 else if (player.getCardsCount() == player.CARD_LIMIT - 1) {
-                    lblHelp.setText("Wähle 1 Karte");
+                    lblHelp.setText(locale.getString("ui", "cardpoll-label-help-single"));
                 }
                 else if (player.getCardsCount() < player.CARD_LIMIT) {
-                    lblHelp.setText(String.format("Wähle %d Karten", player.CARD_LIMIT - player.getCardsCount()));
+                    lblHelp.setText(String.format(locale.getString("ui", "cardpoll-label-help"), player.CARD_LIMIT - player.getCardsCount()));
                 }
             });
         }
@@ -119,7 +124,7 @@ public class CardpollController {
      */
     private void btnContinueAction(ActionEvent event) {
         try {
-            new GameController(stage, logging, computer, player);
+            new GameController(stage, logging, locale, computer, player);
         }
         catch (Exception ex) {
             logging.log(Level.SEVERE, "Exception", ex);
@@ -132,7 +137,7 @@ public class CardpollController {
      */
     private void btnBackAction(ActionEvent event) {
         try {
-            new MainController(stage, logging);
+            new MainController(stage, logging, locale);
         }
         catch (Exception ex) {
             logging.log(Level.SEVERE, "Exception", ex);
