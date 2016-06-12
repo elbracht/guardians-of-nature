@@ -6,10 +6,10 @@ import elementum.models.Cards;
 import java.util.Random;
 
 public class Computer extends Player{
-    public Computer(Cards allCards) {
+    public Computer() {
         super();
 
-        addRandomCards(allCards);
+        addRandomCards(new Cards());
     }
 
     public void addRandomCards(Cards allCards) {
