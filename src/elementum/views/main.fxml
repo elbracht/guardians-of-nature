@@ -13,5 +13,10 @@
             <Image url="@../assets/footer.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="130.0" fitWidth="230.0" layoutX="295.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/title.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
