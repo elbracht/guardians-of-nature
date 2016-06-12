@@ -39,6 +39,8 @@ public class GameController implements Observer {
     private Player player;
     private Card cardActive = null;
 
+    private Thread animationThread;
+
     /**
      * Constructor
      * @param stage Stage
@@ -77,7 +79,7 @@ public class GameController implements Observer {
         // Referee
         referee = new Referee(player, computer);
         referee.addObserver(this);
-        referee.setPlayersTurn(false);//Math.random() < 0.5);
+        referee.setPlayersTurn(Math.random() < 0.5);
     }
 
     /**
@@ -268,7 +270,7 @@ public class GameController implements Observer {
                 lblInfo.setText("Computer ist am Zug.");
                 updateCursor();
 
-                Thread animationThread = new Thread(() -> {
+                animationThread = new Thread(() -> {
                     try {
                         Thread.sleep(1200);
 
@@ -351,7 +353,7 @@ public class GameController implements Observer {
      */
     private void btnBackAction(ActionEvent event) {
         try {
-            new DialogController(stage, logging);
+            new DialogController(stage, logging, animationThread);
         }
         catch (Exception ex) {
             logging.log(Level.SEVERE, "Exception", ex);

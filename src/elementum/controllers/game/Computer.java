@@ -81,7 +81,35 @@ public class Computer extends Player{
 
         // No card is destroyed
         if (card0.getHealth() > 0 && card1.getHealth() > 0 && card2.getHealth() > 0) {
-            if (card0.getAttack() > card1.getAttack() && card0.getAttack() > card2.getAttack()) {
+            if (card0.getAttack() == card1.getAttack() && card1.getAttack() == card2.getAttack()) {
+                Random random = new Random();
+                return random.nextInt(3);
+            }
+            else if (card0.getAttack() == card1.getAttack() && card0.getAttack() > card2.getAttack()) {
+                if (Math.random() < 0.5) {
+                    return 0;
+                }
+                else {
+                    return 1;
+                }
+            }
+            else if (card1.getAttack() == card2.getAttack() && card1.getAttack() > card0.getAttack()) {
+                if (Math.random() < 0.5) {
+                    return 1;
+                }
+                else {
+                    return 2;
+                }
+            }
+            else if (card0.getAttack() == card2.getAttack() && card2.getAttack() > card1.getAttack()) {
+                if (Math.random() < 0.5) {
+                    return 0;
+                }
+                else {
+                    return 2;
+                }
+            }
+            else if (card0.getAttack() > card1.getAttack() && card0.getAttack() > card2.getAttack()) {
                 return 0;
             }
             else if (card1.getAttack() > card0.getAttack() && card1.getAttack() > card2.getAttack()) {
@@ -93,7 +121,15 @@ public class Computer extends Player{
         }
         // Only card 0 is destroyed
         else if (card0.getHealth() <= 0 && card1.getHealth() > 0 && card2.getHealth() > 0) {
-            if (card1.getAttack() > card2.getAttack()) {
+            if (card1.getAttack() == card2.getAttack()) {
+                if (Math.random() < 0.5) {
+                    return 1;
+                }
+                else {
+                    return 2;
+                }
+            }
+            else if (card1.getAttack() > card2.getAttack()) {
                 return 1;
             }
             else {
@@ -102,7 +138,15 @@ public class Computer extends Player{
         }
         // Only card 1 is destroyed
         else if (card0.getHealth() > 0 && card1.getHealth() <= 0 && card2.getHealth() > 0) {
-            if (card0.getAttack() > card2.getAttack()) {
+            if (card0.getAttack() == card1.getAttack()) {
+                if (Math.random() < 0.5) {
+                    return 0;
+                }
+                else {
+                    return 2;
+                }
+            }
+            else if (card0.getAttack() > card2.getAttack()) {
                 return 0;
             }
             else {
@@ -111,7 +155,15 @@ public class Computer extends Player{
         }
         // Only card 2 is destroyed
         else if (card0.getHealth() > 0 && card1.getHealth() > 0 && card2.getHealth() <= 0) {
-            if (card0.getAttack() > card1.getAttack()) {
+            if (card0.getAttack() == card1.getAttack()) {
+                if (Math.random() < 0.5) {
+                    return 0;
+                }
+                else {
+                    return 1;
+                }
+            }
+            else if (card0.getAttack() > card1.getAttack()) {
                 return 0;
             }
             else {
@@ -142,7 +194,6 @@ public class Computer extends Player{
      */
     private int chooseDefenseCard(Card attackCard, Player player) {
         int[] depth = createAttackTree(attackCard, player.getCards());
-        Random random = new Random();
 
         // Everything is different
         if (depth[0] != depth[1] && depth[1] != depth[2] && depth[0] != depth[2]) {
@@ -184,6 +235,7 @@ public class Computer extends Player{
         }
         // Everything is same
         else if (depth[0] == depth[1] && depth[1] == depth[2] && depth[0] == depth[2]) {
+            Random random = new Random();
             return random.nextInt(3);
         }
         // 0 and 1 are the same
