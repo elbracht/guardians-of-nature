@@ -1,6 +1,7 @@
 package elementum.controllers;
 
 import elementum.controllers.utils.CursorLoader;
+import elementum.controllers.utils.Logging;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,19 +9,23 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import java.util.logging.Level;
+
 /**
  * This class is the controller for the main view.
  */
 public class MainController {
     private Stage stage;
+    private Logging logging;
 
     /**
      * Constructor
      * @param stage Stage
      * @throws Exception
      */
-    public MainController(Stage stage) throws Exception {
+    public MainController(Stage stage, Logging logging) throws Exception {
         this.stage = stage;
+        this.logging = logging;
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/main.fxml"));
         root.setCursor(CursorLoader.getDefault());
@@ -49,10 +54,10 @@ public class MainController {
      */
     private void btnStartAction(ActionEvent event) {
         try {
-            new CardpollController(stage);
+            new CardpollController(stage, logging);
         }
         catch (Exception ex) {
-            // TODO: Catch exception
+            logging.log(Level.SEVERE, "Exception", ex);
         }
     }
 

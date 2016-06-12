@@ -4,6 +4,7 @@ import elementum.controllers.game.Computer;
 import elementum.controllers.game.Player;
 import elementum.controllers.game.Referee;
 import elementum.controllers.utils.CursorLoader;
+import elementum.controllers.utils.Logging;
 import elementum.models.Card;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -22,6 +23,7 @@ import javafx.stage.Stage;
 import java.awt.image.BufferedImage;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
 
 /**
  * @author Alexander Elbracht
@@ -31,6 +33,7 @@ import java.util.Observer;
  */
 public class GameController implements Observer {
     private Stage stage;
+    private Logging logging;
     private Referee referee;
     private Computer computer;
     private Player player;
@@ -43,8 +46,9 @@ public class GameController implements Observer {
      * @param player Player
      * @throws Exception
      */
-    public GameController(Stage stage, Computer computer, Player player) throws Exception {
+    public GameController(Stage stage, Logging logging, Computer computer, Player player) throws Exception {
         this.stage = stage;
+        this.logging = logging;
         this.computer = computer;
         this.player = player;
 
@@ -136,8 +140,7 @@ public class GameController implements Observer {
                         });
                     }
                     catch (Exception ex) {
-                        System.out.println(ex.getMessage());
-                        // TODO: Catch exception
+                        logging.log(Level.SEVERE, "Exception", ex);
                     }
                 });
 
@@ -314,8 +317,7 @@ public class GameController implements Observer {
                         }
                     }
                     catch (Exception ex) {
-                        System.out.println(ex.getMessage());
-                        // TODO: Catch exception
+                        logging.log(Level.SEVERE, "Exception", ex);
                     }
                 });
 
@@ -325,10 +327,10 @@ public class GameController implements Observer {
         else {
             // Game over
             try {
-                new GameoverController(stage, referee);
+                new GameoverController(stage, logging, referee);
             }
             catch (Exception ex) {
-                // TODO: Catch exception
+                logging.log(Level.SEVERE, "Exception", ex);
             }
         }
     }
@@ -349,10 +351,10 @@ public class GameController implements Observer {
      */
     private void btnBackAction(ActionEvent event) {
         try {
-            new DialogController(stage);
+            new DialogController(stage, logging);
         }
         catch (Exception ex) {
-            // TODO: Catch exception
+            logging.log(Level.SEVERE, "Exception", ex);
         }
     }
 }

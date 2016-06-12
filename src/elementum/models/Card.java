@@ -68,7 +68,7 @@ public class Card {
     /**
      * This method draw text (name, attack, health) on a card image
      */
-    public void paint() {
+    public void paint() throws Exception {
         int width = getImageDefault().getWidth();
         int height = getImageDefault().getHeight();
 

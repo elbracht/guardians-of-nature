@@ -1,17 +1,21 @@
 package elementum.controllers;
 
 import elementum.controllers.utils.CursorLoader;
+import elementum.controllers.utils.Logging;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import java.util.logging.Level;
+
 /**
  * This class is the controller for the dialog view.
  */
 public class DialogController {
     private Stage stage;
+    private Logging logging;
     private Stage dialogStage;
 
     /**
@@ -19,8 +23,9 @@ public class DialogController {
      * @param stage Stage
      * @throws Exception
      */
-    public DialogController(Stage stage) throws Exception {
+    public DialogController(Stage stage, Logging logging) throws Exception {
         this.stage = stage;
+        this.logging = logging;
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/dialog.fxml"));
         root.setCursor(CursorLoader.getDefault());
@@ -38,11 +43,11 @@ public class DialogController {
         Button buttonYes = (Button)scene.lookup("#btnYes");
         buttonYes.setOnAction(event -> {
             try {
-                new MainController(stage);
+                new MainController(stage, logging);
                 dialogStage.close();
             }
             catch (Exception ex) {
-                // TODO: Catch exception
+                logging.log(Level.SEVERE, "Exception", ex);
             }
         });
 

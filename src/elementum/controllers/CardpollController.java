@@ -3,6 +3,7 @@ package elementum.controllers;
 import elementum.controllers.game.Computer;
 import elementum.controllers.game.Player;
 import elementum.controllers.utils.CursorLoader;
+import elementum.controllers.utils.Logging;
 import elementum.models.Cards;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -17,12 +18,14 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.awt.image.BufferedImage;
+import java.util.logging.Level;
 
 /**
  * This class is the controller for the card poll view.
  */
 public class CardpollController {
     private Stage stage;
+    private Logging logging;
     private Cards cards;
     private Player player;
     private Computer computer;
@@ -32,8 +35,9 @@ public class CardpollController {
      * @param stage Stage
      * @throws Exception
      */
-    public CardpollController(Stage stage) throws Exception {
+    public CardpollController(Stage stage, Logging logging) throws Exception {
         this.stage = stage;
+        this.logging = logging;
 
         cards = new Cards();
         player = new Player();
@@ -115,11 +119,10 @@ public class CardpollController {
      */
     private void btnContinueAction(ActionEvent event) {
         try {
-            new GameController(stage, computer, player);
+            new GameController(stage, logging, computer, player);
         }
         catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            // TODO: Catch exception
+            logging.log(Level.SEVERE, "Exception", ex);
         }
     }
 
@@ -129,11 +132,10 @@ public class CardpollController {
      */
     private void btnBackAction(ActionEvent event) {
         try {
-            new MainController(stage);
+            new MainController(stage, logging);
         }
         catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            // TODO: Catch exception
+            logging.log(Level.SEVERE, "Exception", ex);
         }
     }
 }

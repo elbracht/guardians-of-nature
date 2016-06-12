@@ -95,7 +95,7 @@ public class Player {
      * @param index Index of card
      * @param damage Damage value
      */
-    public void attack(int index, int damage) {
+    public void attack(int index, int damage) throws Exception {
         attack(getCard(index), damage);
     }
 
@@ -104,7 +104,7 @@ public class Player {
      * @param card Card
      * @param damage Damage value
      */
-    public void attack(Card card, int damage) {
+    public void attack(Card card, int damage) throws Exception {
         card.setHealth(card.getHealth() - damage);
         card.paint();
     }
