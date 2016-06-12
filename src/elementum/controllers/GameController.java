@@ -77,7 +77,7 @@ public class GameController implements Observer {
         // Referee
         referee = new Referee(player, computer);
         referee.addObserver(this);
-        referee.setPlayersTurn(false);//Math.random() < 0.5);
+        referee.setPlayersTurn(Math.random() < 0.5);
     }
 
     /**
