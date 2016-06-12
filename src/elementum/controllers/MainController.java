@@ -3,6 +3,7 @@ package elementum.controllers;
 import elementum.controllers.utils.CursorLoader;
 import elementum.controllers.utils.Locale;
 import elementum.controllers.utils.Logging;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -56,6 +57,11 @@ public class MainController {
         // Language german
         ImageView btnGerman = (ImageView)scene.lookup("#language-de");
 
+        if (locale.getLanguage() == "de_DE") {
+            ObservableList styleClass = btnGerman.getStyleClass();
+            styleClass.add("card-selected");
+        }
+
         btnGerman.setOnMouseEntered(event -> {
             if (locale.getLanguage() != "de_DE") {
                 btnGerman.setCursor(CursorLoader.getSelect());
@@ -73,6 +79,11 @@ public class MainController {
 
         // Language english
         ImageView btnEnglish = (ImageView)scene.lookup("#language-en");
+
+        if (locale.getLanguage() == "en_US") {
+            ObservableList styleClass = btnEnglish.getStyleClass();
+            styleClass.add("card-selected");
+        }
 
         btnEnglish.setOnMouseEntered(event -> {
             if (locale.getLanguage() != "en_US") {
