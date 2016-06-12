@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.util.logging.Level;
@@ -18,17 +19,17 @@ import java.util.logging.Level;
 public class MainController {
     private Stage stage;
     private Logging logging;
+    private Locale locale;
 
     /**
      * Constructor
      * @param stage Stage
      * @throws Exception
      */
-    public MainController(Stage stage, Logging logging) throws Exception {
+    public MainController(Stage stage, Logging logging, Locale locale) throws Exception {
         this.stage = stage;
         this.logging = logging;
-
-        Locale locale = new Locale();
+        this.locale = locale;
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/main.fxml"));
         root.setCursor(CursorLoader.getDefault());
@@ -51,6 +52,30 @@ public class MainController {
         Button btnExit = (Button)scene.lookup("#btnExit");
         btnExit.setText(locale.getString("ui", "main-button-exit"));
         btnExit.setOnAction(this::btnExitAction);
+
+        // Language german
+        ImageView btnGerman = (ImageView)scene.lookup("#language-de");
+        btnGerman.setOnMouseClicked(event -> {
+            try {
+                new MainController(stage, logging, new Locale("de_DE"));
+            }
+            catch (Exception ex) {
+                logging.log(Level.SEVERE, "Exception", ex);
+            }
+        });
+
+        // Language english
+        ImageView btnEnglish = (ImageView)scene.lookup("#language-en");
+        btnEnglish.setOnMouseClicked(event -> {
+            try {
+                new MainController(stage, logging, new Locale("en_US"));
+            }
+            catch (Exception ex) {
+                logging.log(Level.SEVERE, "Exception", ex);
+            }
+        });
+
+
     }
 
     /**
@@ -59,7 +84,7 @@ public class MainController {
      */
     private void btnStartAction(ActionEvent event) {
         try {
-            new CardpollController(stage, logging);
+            new CardpollController(stage, logging, locale);
         }
         catch (Exception ex) {
             logging.log(Level.SEVERE, "Exception", ex);

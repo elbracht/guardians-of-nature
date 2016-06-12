@@ -17,9 +17,7 @@ public class Cards {
         return cards;
     }
 
-    public Cards() throws Exception {
-        Locale locale = new Locale();
-
+    public Cards(Locale locale) throws Exception {
         cards = new ArrayList<>();
 
         Card bear = new Card();

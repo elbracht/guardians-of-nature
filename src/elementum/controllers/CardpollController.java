@@ -27,6 +27,7 @@ import java.util.logging.Level;
 public class CardpollController {
     private Stage stage;
     private Logging logging;
+    private Locale locale;
     private Cards cards;
     private Player player;
     private Computer computer;
@@ -36,15 +37,14 @@ public class CardpollController {
      * @param stage Stage
      * @throws Exception
      */
-    public CardpollController(Stage stage, Logging logging) throws Exception {
+    public CardpollController(Stage stage, Logging logging, Locale locale) throws Exception {
         this.stage = stage;
         this.logging = logging;
+        this.locale = locale;
 
-        cards = new Cards();
+        cards = new Cards(locale);
         player = new Player();
-        computer = new Computer();
-
-        Locale locale = new Locale();
+        computer = new Computer(new Cards(locale));
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/cardpoll.fxml"));
         root.setCursor(CursorLoader.getDefault());
@@ -124,7 +124,7 @@ public class CardpollController {
      */
     private void btnContinueAction(ActionEvent event) {
         try {
-            new GameController(stage, logging, computer, player);
+            new GameController(stage, logging, locale, computer, player);
         }
         catch (Exception ex) {
             logging.log(Level.SEVERE, "Exception", ex);
@@ -137,7 +137,7 @@ public class CardpollController {
      */
     private void btnBackAction(ActionEvent event) {
         try {
-            new MainController(stage, logging);
+            new MainController(stage, logging, locale);
         }
         catch (Exception ex) {
             logging.log(Level.SEVERE, "Exception", ex);

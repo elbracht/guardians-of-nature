@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.Pane?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elementum.Main">
    <children>
@@ -16,6 +15,16 @@
       <ImageView fitHeight="130.0" fitWidth="230.0" layoutX="295.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/title.png" />
+         </image>
+      </ImageView>
+      <ImageView id="language-de" fitHeight="30.0" fitWidth="50.0" layoutX="736.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/flags/de_DE.png" />
+         </image>
+      </ImageView>
+      <ImageView id="language-en" fitHeight="30.0" fitWidth="50.0" layoutX="736.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/flags/en_US.png" />
          </image>
       </ImageView>
    </children>

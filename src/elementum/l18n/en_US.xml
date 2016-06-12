@@ -17,7 +17,7 @@
     <ui>
         <main-button-start>START</main-button-start>
         <main-button-exit>EXIT</main-button-exit>
-        <cardpoll-button-continue>COUNTINUE</cardpoll-button-continue>
+        <cardpoll-button-continue>NEXT</cardpoll-button-continue>
         <cardpoll-button-back>BACK</cardpoll-button-back>
         <cardpoll-label-help-single>Choose 1 card</cardpoll-label-help-single>
         <cardpoll-label-help>Choose %d cards</cardpoll-label-help>

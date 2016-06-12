@@ -20,6 +20,7 @@ import java.util.logging.Level;
 public class GameoverController {
     private Stage stage;
     private Logging logging;
+    private Locale locale;
 
     /**
      * Constructor
@@ -27,11 +28,10 @@ public class GameoverController {
      * @param referee Referee
      * @throws Exception
      */
-    public GameoverController(Stage stage, Logging logging, Referee referee) throws Exception {
+    public GameoverController(Stage stage, Logging logging, Locale locale, Referee referee) throws Exception {
         this.stage = stage;
         this.logging = logging;
-
-        Locale locale = new Locale();
+        this.locale = locale;
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/gameover.fxml"));
         root.setCursor(CursorLoader.getDefault());
@@ -66,7 +66,7 @@ public class GameoverController {
      */
     private void btnBackAction(ActionEvent event) {
         try {
-            new MainController(stage, logging);
+            new MainController(stage, logging, locale);
         }
         catch (Exception ex) {
             logging.log(Level.SEVERE, "Exception", ex);

@@ -18,6 +18,7 @@ import java.util.logging.Level;
 public class DialogController {
     private Stage stage;
     private Logging logging;
+    private Locale locale;
     private Stage dialogStage;
 
     /**
@@ -25,11 +26,10 @@ public class DialogController {
      * @param stage Stage
      * @throws Exception
      */
-    public DialogController(Stage stage, Logging logging, Thread thread) throws Exception {
+    public DialogController(Stage stage, Logging logging, Locale locale, Thread thread) throws Exception {
         this.stage = stage;
         this.logging = logging;
-
-        Locale locale = new Locale();
+        this.locale = locale;
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/dialog.fxml"));
         root.setCursor(CursorLoader.getDefault());
@@ -49,7 +49,7 @@ public class DialogController {
         btnYes.setOnAction(event -> {
             try {
                 thread.stop();
-                new MainController(stage, logging);
+                new MainController(stage, logging, locale);
                 dialogStage.close();
             }
             catch (Exception ex) {

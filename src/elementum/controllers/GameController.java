@@ -35,12 +35,11 @@ import java.util.logging.Level;
 public class GameController implements Observer {
     private Stage stage;
     private Logging logging;
+    private Locale locale;
     private Referee referee;
     private Computer computer;
     private Player player;
     private Card cardActive = null;
-
-    private Locale locale;
 
     private Thread animationThread;
 
@@ -51,13 +50,12 @@ public class GameController implements Observer {
      * @param player Player
      * @throws Exception
      */
-    public GameController(Stage stage, Logging logging, Computer computer, Player player) throws Exception {
+    public GameController(Stage stage, Logging logging, Locale locale, Computer computer, Player player) throws Exception {
         this.stage = stage;
         this.logging = logging;
+        this.locale = locale;
         this.computer = computer;
         this.player = player;
-
-        locale = new Locale();
 
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/game.fxml"));
         root.setCursor(CursorLoader.getDefault());
@@ -344,7 +342,7 @@ public class GameController implements Observer {
         else {
             // Game over
             try {
-                new GameoverController(stage, logging, referee);
+                new GameoverController(stage, logging, locale, referee);
             }
             catch (Exception ex) {
                 logging.log(Level.SEVERE, "Exception", ex);
@@ -368,7 +366,7 @@ public class GameController implements Observer {
      */
     private void btnBackAction(ActionEvent event) {
         try {
-            new DialogController(stage, logging, animationThread);
+            new DialogController(stage, logging, locale, animationThread);
         }
         catch (Exception ex) {
             logging.log(Level.SEVERE, "Exception", ex);

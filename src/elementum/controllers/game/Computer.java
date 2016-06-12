@@ -16,10 +16,10 @@ public class Computer extends Player{
     /**
      * Constructor
      */
-    public Computer() throws Exception {
+    public Computer(Cards cards) throws Exception {
         super();
 
-        addRandomCards(new Cards());
+        addRandomCards(cards);
     }
 
     /**

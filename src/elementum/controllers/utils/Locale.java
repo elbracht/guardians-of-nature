@@ -12,15 +12,13 @@ import java.io.InputStream;
  * @author Alexander Elbracht
  */
 public class Locale {
-    static final String LOCALE = "de_DE";
-
     private Document document;
 
-    public Locale() throws Exception {
+    public Locale(String locale) throws Exception {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
 
-        InputStream inputStream = getClass().getResourceAsStream(String.format("/elementum/l18n/%s.xml", LOCALE));
+        InputStream inputStream = getClass().getResourceAsStream(String.format("/elementum/l18n/%s.xml", locale));
         document = builder.parse(inputStream);
     }
 
