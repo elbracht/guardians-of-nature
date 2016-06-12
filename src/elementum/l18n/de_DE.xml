@@ -20,5 +20,11 @@
         <cardpoll-button-continue>WEITER</cardpoll-button-continue>
         <cardpoll-button-back>ZURÜCK</cardpoll-button-back>
         <cardpoll-label-help>Wähle %d Karten</cardpoll-label-help>
+        <game-button-help>HILFE</game-button-help>
+        <game-button-back>ZURÜCK</game-button-back>
+        <game-label-player>Spieler</game-label-player>
+        <game-label-computer>Computer</game-label-computer>
+        <game-label-help-player>Spieler ist am Zug.</game-label-help-player>
+        <game-label-help-computer>Computer ist am Zug.</game-label-help-computer>
     </ui>
 </de_DE>

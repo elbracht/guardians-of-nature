@@ -4,6 +4,7 @@ import elementum.controllers.game.Computer;
 import elementum.controllers.game.Player;
 import elementum.controllers.game.Referee;
 import elementum.controllers.utils.CursorLoader;
+import elementum.controllers.utils.Locale;
 import elementum.controllers.utils.Logging;
 import elementum.models.Card;
 import javafx.application.Platform;
@@ -39,6 +40,8 @@ public class GameController implements Observer {
     private Player player;
     private Card cardActive = null;
 
+    private Locale locale;
+
     private Thread animationThread;
 
     /**
@@ -54,6 +57,8 @@ public class GameController implements Observer {
         this.computer = computer;
         this.player = player;
 
+        locale = new Locale();
+
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/game.fxml"));
         root.setCursor(CursorLoader.getDefault());
 
@@ -64,11 +69,21 @@ public class GameController implements Observer {
 
         // Help Button
         Button btnHelp = (Button)scene.lookup("#btnHelp");
+        btnHelp.setText(locale.getString("ui", "game-button-help"));
         btnHelp.setOnAction(this::btnHelpAction);
 
         // Back Button
         Button btnBack = (Button)scene.lookup("#btnBack");
+        btnBack.setText(locale.getString("ui", "game-button-back"));
         btnBack.setOnAction(this::btnBackAction);
+
+        // Player label
+        Label lblPlayer = (Label)scene.lookup("#lblPlayer");
+        lblPlayer.setText(locale.getString("ui", "game-label-player"));
+
+        // Computer label
+        Label lblComputer = (Label)scene.lookup("#lblComputer");
+        lblComputer.setText(locale.getString("ui", "game-label-computer"));
 
         // Add player and computer cards
         for (int i = 0; i < 3; i++) {
@@ -263,11 +278,11 @@ public class GameController implements Observer {
 
         if (!referee.isGameOver()) {
             if (referee.isPlayersTurn()) {
-                lblInfo.setText("Spieler ist am Zug.");
+                lblInfo.setText(locale.getString("ui", "game-label-help-player"));
                 updateCursor();
             } else {
                 unselectAllCards();
-                lblInfo.setText("Computer ist am Zug.");
+                lblInfo.setText(locale.getString("ui", "game-label-help-computer"));
                 updateCursor();
 
                 animationThread = new Thread(() -> {

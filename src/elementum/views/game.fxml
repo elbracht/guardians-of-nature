@@ -16,10 +16,10 @@
       <ImageView id="3" fitHeight="150.0" fitWidth="125.0" layoutX="330.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="20.0" />
       <ImageView id="4" fitHeight="150.0" fitWidth="125.0" layoutX="455.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="40.0" />
       <ImageView id="5" fitHeight="150.0" fitWidth="125.0" layoutX="580.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="60.0" />
-      <Button id="btnBack" layoutX="615.0" layoutY="495.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="ZURÜCK" />
-      <Button id="btnHelp" layoutX="615.0" layoutY="425.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="HILFE" visible="false" />
-      <Label id="lblPlayer" alignment="CENTER" layoutX="40.0" layoutY="358.0" prefHeight="17.0" prefWidth="415.0" text="Spieler" />
-      <Label id="lblComputer" alignment="CENTER" layoutX="350.0" layoutY="224.0" prefHeight="17.0" prefWidth="415.0" text="Computer" />
-      <Label id="lblInfo" alignment="CENTER" layoutY="290.0" prefHeight="20.0" prefWidth="800.0" text="\%s ist am Zug." />
+      <Button id="btnBack" layoutX="615.0" layoutY="495.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="[back]" />
+      <Button id="btnHelp" layoutX="615.0" layoutY="425.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="[help]" visible="false" />
+      <Label id="lblPlayer" alignment="CENTER" layoutX="40.0" layoutY="358.0" prefHeight="17.0" prefWidth="415.0" text="[player]" />
+      <Label id="lblComputer" alignment="CENTER" layoutX="350.0" layoutY="224.0" prefHeight="17.0" prefWidth="415.0" text="[computer]" />
+      <Label id="lblInfo" alignment="CENTER" layoutY="290.0" prefHeight="20.0" prefWidth="800.0" text="[info]" />
    </children>
 </Pane>
