@@ -64,15 +64,74 @@ public class Computer extends Player{
      * @return Array of ids (id for attack card and id for target card)
      */
     public int[] chooseCards(Player player) {
-        for (int i = 0; i < getCards().length; i++) {
-            Card card = getCard(i);
+        int attack = chooseAttackCard();
+        int defense = chooseDefenseCard(getCard(attack), player);
 
-            if (card.getHealth() > 0) {
-                return new int[] { i, chooseDefenseCard(card, player) };
+        return new int[] { attack, defense };
+    }
+
+    /**
+     *
+     * @return
+     */
+    private int chooseAttackCard() {
+        Card card0 = getCard(0);
+        Card card1 = getCard(1);
+        Card card2 = getCard(2);
+
+        // No card is destroyed
+        if (card0.getHealth() > 0 && card1.getHealth() > 0 && card2.getHealth() > 0) {
+            if (card0.getAttack() > card1.getAttack() && card0.getAttack() > card2.getAttack()) {
+                return 0;
+            }
+            else if (card1.getAttack() > card0.getAttack() && card1.getAttack() > card2.getAttack()) {
+                return 1;
+            }
+            else if (card2.getAttack() > card0.getAttack() && card2.getAttack() > card1.getAttack()) {
+                return 2;
             }
         }
+        // Only card 0 is destroyed
+        else if (card0.getHealth() <= 0 && card1.getHealth() > 0 && card2.getHealth() > 0) {
+            if (card1.getAttack() > card2.getAttack()) {
+                return 1;
+            }
+            else {
+                return 2;
+            }
+        }
+        // Only card 1 is destroyed
+        else if (card0.getHealth() > 0 && card1.getHealth() <= 0 && card2.getHealth() > 0) {
+            if (card0.getAttack() > card2.getAttack()) {
+                return 0;
+            }
+            else {
+                return 2;
+            }
+        }
+        // Only card 2 is destroyed
+        else if (card0.getHealth() > 0 && card1.getHealth() > 0 && card2.getHealth() <= 0) {
+            if (card0.getAttack() > card1.getAttack()) {
+                return 0;
+            }
+            else {
+                return 1;
+            }
+        }
+        // Card 0 and card 1 are destroyed
+        else if (card0.getHealth() <= 0 && card1.getHealth() <= 0 && card2.getHealth() > 0) {
+            return 2;
+        }
+        // Card 1 and card 2 are destroyed
+        else if (card0.getHealth() > 0 && card1.getHealth() <= 0 && card2.getHealth() <= 0) {
+            return 0;
+        }
+        // Card 0 and card 2 are destroyed
+        else if (card0.getHealth() <= 0 && card1.getHealth() > 0 && card2.getHealth() <= 0) {
+            return 1;
+        }
 
-        return null;
+        return 0;
     }
 
     /**
