@@ -1,6 +1,7 @@
 package elementum.controllers;
 
 import elementum.controllers.utils.CursorLoader;
+import elementum.controllers.utils.Locale;
 import elementum.controllers.utils.Logging;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +28,8 @@ public class MainController {
         this.stage = stage;
         this.logging = logging;
 
+        Locale locale = new Locale();
+
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/main.fxml"));
         root.setCursor(CursorLoader.getDefault());
 
@@ -41,10 +44,12 @@ public class MainController {
 
         // Start button
         Button btnStart = (Button)scene.lookup("#btnStart");
+        btnStart.setText(locale.getString("ui", "main-button-start"));
         btnStart.setOnAction(this::btnStartAction);
 
         // Exit button
         Button btnExit = (Button)scene.lookup("#btnExit");
+        btnExit.setText(locale.getString("ui", "main-button-exit"));
         btnExit.setOnAction(this::btnExitAction);
     }
 

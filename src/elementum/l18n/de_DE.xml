@@ -14,4 +14,8 @@
         <tiger>Tiger</tiger>
         <turtle>Schildkröte</turtle>
     </cards>
+    <ui>
+        <main-button-start>START</main-button-start>
+        <main-button-exit>BEENDEN</main-button-exit>
+    </ui>
 </de_DE>
