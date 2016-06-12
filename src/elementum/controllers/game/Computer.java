@@ -188,7 +188,7 @@ public class Computer extends Player{
         }
         // 0 and 1 are the same
         else if (depth[0] == depth[1] && depth[0] != depth[2] && depth[1] != depth[2]) {
-            if (depth[0] > 0) {
+            if (depth[0] > 0 && depth[2] > 0) {
                 if (depth[0] < depth[2]) {
                     if (Math.random() < 0.5) {
                         return 0;
@@ -201,13 +201,21 @@ public class Computer extends Player{
                     return 2;
                 }
             }
+            else if (depth[0] > 0 && depth[2] <= 0) {
+                if (Math.random() < 0.5) {
+                    return 0;
+                }
+                else {
+                    return 1;
+                }
+            }
             else {
                 return 2;
             }
         }
         // 1 and 2 are the same
         else if (depth[1] == depth[2] && depth[1] != depth[0] && depth[2] != depth[0]) {
-            if (depth[1] > 0) {
+            if (depth[1] > 0 && depth[0] > 0) {
                 if (depth[1] < depth[0]) {
                     if (Math.random() < 0.5) {
                         return 1;
@@ -220,13 +228,21 @@ public class Computer extends Player{
                     return 0;
                 }
             }
+            else if (depth[1] > 0 && depth[0] <= 0) {
+                if (Math.random() < 0.5) {
+                    return 1;
+                }
+                else {
+                    return 2;
+                }
+            }
             else {
                 return 0;
             }
         }
         // 0 and 2 are the same
         else if (depth[0] == depth[2] && depth[0] != depth[1] && depth[2] != depth[1]) {
-            if (depth[0] > 0) {
+            if (depth[0] > 0 && depth[1] > 0) {
                 if (depth[0] < depth[1]) {
                     if (Math.random() < 0.5) {
                         return 0;
@@ -237,6 +253,14 @@ public class Computer extends Player{
                 }
                 else {
                     return 1;
+                }
+            }
+            else if (depth[0] > 0 && depth[1] <= 0) {
+                if (Math.random() < 0.5) {
+                    return 0;
+                }
+                else {
+                    return 2;
                 }
             }
             else {
