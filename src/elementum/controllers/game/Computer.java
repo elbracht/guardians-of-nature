@@ -71,8 +71,8 @@ public class Computer extends Player{
     }
 
     /**
-     *
-     * @return
+     * Choose the attack card
+     * @return Id of attack card
      */
     private int chooseAttackCard() {
         Card card0 = getCard(0);
@@ -135,7 +135,7 @@ public class Computer extends Player{
     }
 
     /**
-     * Choose the defense card the first is destroyed
+     * Choose the defense card
      * @param attackCard Attack card
      * @param player Player
      * @return Id of defense card
