@@ -158,15 +158,6 @@ public class GameController implements Observer {
         ImageView imageView = getImageView(player.getId(card));
         imageView.setImage(SwingFXUtils.toFXImage(image, null));
 
-        imageView.setOnMouseEntered(t -> {
-            if (referee.isPlayersTurn()) {
-                imageView.setCursor(CursorLoader.getSelect());
-            }
-            else {
-                imageView.setCursor(CursorLoader.getDefault());
-            }
-        });
-
         // Event for click on player card
         imageView.setOnMouseClicked(t -> {
             if (referee.isPlayersTurn()) {
@@ -227,6 +218,34 @@ public class GameController implements Observer {
         return (ImageView)stage.getScene().lookup(String.format("#%s", id));
     }
 
+    /* Cursor */
+
+    /**
+     * Update cursor
+     */
+    private void updateCursor() {
+        ImageView imageView0 = getImageView(0);
+        ImageView imageView1 = getImageView(1);
+        ImageView imageView2 = getImageView(2);
+        ImageView imageView3 = getImageView(3);
+        ImageView imageView4 = getImageView(4);
+        ImageView imageView5 = getImageView(5);
+
+        if (referee.isPlayersTurn()) {
+            imageView0.setCursor(CursorLoader.getSelect());
+            imageView1.setCursor(CursorLoader.getSelect());
+            imageView2.setCursor(CursorLoader.getSelect());
+        }
+        else {
+            imageView0.setCursor(CursorLoader.getDefault());
+            imageView1.setCursor(CursorLoader.getDefault());
+            imageView2.setCursor(CursorLoader.getDefault());
+            imageView3.setCursor(CursorLoader.getDefault());
+            imageView4.setCursor(CursorLoader.getDefault());
+            imageView5.setCursor(CursorLoader.getDefault());
+        }
+    }
+
     /* Observer */
 
     /**
@@ -240,9 +259,11 @@ public class GameController implements Observer {
         if (!referee.isGameOver()) {
             if (referee.isPlayersTurn()) {
                 lblInfo.setText("Spieler ist am Zug.");
+                updateCursor();
             } else {
                 unselectAllCards();
                 lblInfo.setText("Computer ist am Zug.");
+                updateCursor();
 
                 Thread animationThread = new Thread(() -> {
                     try {
