@@ -10,9 +10,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+/**
+ * This class is the controller for the game over view.
+ */
 public class GameoverController {
     private Stage stage;
 
+    /**
+     * Constructor
+     * @param stage Stage
+     * @param referee Referee
+     * @throws Exception
+     */
     public GameoverController(Stage stage, Referee referee) throws Exception {
         this.stage = stage;
 
@@ -33,11 +42,15 @@ public class GameoverController {
             lblGameover.setText("Der Computer hat gewonnen.");
         }
 
-        // Back Button
+        // Back button
         Button btnBack = (Button)scene.lookup("#btnBack");
         btnBack.setOnAction(this::btnBackAction);
     }
 
+    /**
+     * Event for click on button
+     * @param event ActionEvent
+     */
     private void btnBackAction(ActionEvent event) {
         try {
             new MainController(stage);

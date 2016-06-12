@@ -23,6 +23,12 @@ import java.awt.image.BufferedImage;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * @author Alexander Elbracht
+ *
+ * This class is the controller for the game view.
+ * This class observe the Referee to get a update if the turn change
+ */
 public class GameController implements Observer {
     private Stage stage;
     private Referee referee;
@@ -30,6 +36,13 @@ public class GameController implements Observer {
     private Player player;
     private Card cardActive = null;
 
+    /**
+     * Constructor
+     * @param stage Stage
+     * @param computer Computer
+     * @param player Player
+     * @throws Exception
+     */
     public GameController(Stage stage, Computer computer, Player player) throws Exception {
         this.stage = stage;
         this.computer = computer;
@@ -63,6 +76,10 @@ public class GameController implements Observer {
         referee.setPlayersTurn(false);//Math.random() < 0.5);
     }
 
+    /**
+     * Add computer card to the view and add click events
+     * @param id Id for the card
+     */
     private void addComputerCard(int id) {
         Card card = computer.getCard(id);
         computer.updateCard(id + 3, card);
@@ -99,7 +116,7 @@ public class GameController implements Observer {
                         Thread.sleep(300);
 
                         Platform.runLater(() -> {
-                            // Add new image to ImageView
+                            // Add new image to image view
                             if (computer.getCard(id).getHealth() <= 0) {
                                 addCard(computer.getCard(id), imageView, true);
                             }
@@ -129,6 +146,10 @@ public class GameController implements Observer {
         });
     }
 
+    /**
+     * Add player card to the view and add click events
+     * @param id Id for the card
+     */
     private void addPlayerCard(int id) {
         Card card = player.getCard(id);
         player.updateCard(id, card);
@@ -165,8 +186,13 @@ public class GameController implements Observer {
         });
     }
 
+    /* Manage cards in image views */
+
     /**
-     * Manage cards in ImageViews
+     * Add a card to image view
+     * @param card Card to add
+     * @param imageView ImageView
+     * @param grayedOut Is the image view grayed out
      */
     private void addCard(Card card, ImageView imageView, Boolean grayedOut) {
         BufferedImage image = card.getImage();
@@ -181,6 +207,9 @@ public class GameController implements Observer {
         }
     }
 
+    /**
+     * Unselect all cards
+     */
     private void unselectAllCards() {
         cardActive = null;
 
@@ -189,12 +218,21 @@ public class GameController implements Observer {
         }
     }
 
+    /**
+     * Get the image view with a card
+     * @param id Id for the card
+     * @return Image view
+     */
     private ImageView getImageView(int id) {
         return (ImageView)stage.getScene().lookup(String.format("#%s", id));
     }
 
+    /* Observer */
+
     /**
-     * Observer
+     * This update is called if the player or computer turn changed
+     * @param obs Observable
+     * @param obj Object
      */
     public void update(Observable obs, Object obj) {
         Label lblInfo = (Label)stage.getScene().lookup("#lblInfo");
@@ -235,7 +273,7 @@ public class GameController implements Observer {
                             Thread.sleep(300);
 
                             Platform.runLater(() -> {
-                                // Add new image to ImageView
+                                // Add new image to image view
                                 if (defenseCard.getHealth() <= 0) {
                                     addCard(defenseCard, getImageView(player.getId(defenseCard)), true);
                                 } else {
@@ -274,13 +312,20 @@ public class GameController implements Observer {
         }
     }
 
+    /* Events */
+
     /**
-     * Events
+     * Event for click on button
+     * @param event ActionEvent
      */
     private void btnHelpAction(ActionEvent event) {
         //
     }
 
+    /**
+     * Event for click on button
+     * @param event ActionEvent
+     */
     private void btnBackAction(ActionEvent event) {
         try {
             new DialogController(stage);

@@ -18,12 +18,20 @@ import javafx.stage.Stage;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * This class is the controller for the card poll view.
+ */
 public class CardpollController {
     private Stage stage;
     private Cards cards;
     private Player player;
     private Computer computer;
 
+    /**
+     * Constructor
+     * @param stage Stage
+     * @throws Exception
+     */
     public CardpollController(Stage stage) throws Exception {
         this.stage = stage;
 
@@ -39,11 +47,11 @@ public class CardpollController {
 
         stage.setScene(scene);
 
-        // Continue Button
+        // Continue button
         Button btnContinue = (Button)scene.lookup("#btnContinue");
         btnContinue.setOnAction(this::btnContinueAction);
 
-        // Back Button
+        // Back button
         Button btnBack = (Button)scene.lookup("#btnBack");
         btnBack.setOnAction(this::btnBackAction);
 
@@ -103,6 +111,10 @@ public class CardpollController {
         }
     }
 
+    /**
+     * Event for click on button
+     * @param event ActionEvent
+     */
     private void btnContinueAction(ActionEvent event) {
         try {
             new GameController(stage, computer, player);
@@ -113,6 +125,10 @@ public class CardpollController {
         }
     }
 
+    /**
+     * Event for click on button
+     * @param event ActionEvent
+     */
     private void btnBackAction(ActionEvent event) {
         try {
             new MainController(stage);

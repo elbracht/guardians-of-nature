@@ -5,6 +5,10 @@ import elementum.controllers.utils.FontLoader;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * This model class contains all values for a card and
+ * draw text (name, attack, health) on the card images.
+ */
 public class Card {
     private String name;
     private int attack;
@@ -61,6 +65,9 @@ public class Card {
         this.color = Color.decode(color);
     }
 
+    /**
+     * This method draw text (name, attack, health) on a card image
+     */
     public void paint() {
         int width = getImageDefault().getWidth();
         int height = getImageDefault().getHeight();

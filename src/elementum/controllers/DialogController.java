@@ -7,10 +7,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+/**
+ * This class is the controller for the dialog view.
+ */
 public class DialogController {
     private Stage stage;
     private Stage dialogStage;
 
+    /**
+     * Constructor
+     * @param stage Stage
+     * @throws Exception
+     */
     public DialogController(Stage stage) throws Exception {
         this.stage = stage;
 
@@ -26,6 +34,7 @@ public class DialogController {
         dialogStage.setScene(scene);
         dialogStage.show();
 
+        // Yes button
         Button buttonYes = (Button)scene.lookup("#btnYes");
         buttonYes.setOnAction(event -> {
             try {
@@ -37,6 +46,7 @@ public class DialogController {
             }
         });
 
+        // No button
         Button buttonNo = (Button)scene.lookup("#btnNo");
         buttonNo.setOnAction(event -> {
             dialogStage.close();

@@ -3,6 +3,11 @@ package elementum.models;
 import javax.imageio.ImageIO;
 import java.util.ArrayList;
 
+/**
+ * @author Alexander Elbracht
+ *
+ * This class create and save all cards of the game.
+ */
 public class Cards {
     private ArrayList<Card> cards;
 

@@ -8,9 +8,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+/**
+ * This class is the controller for the main view.
+ */
 public class MainController {
     private Stage stage;
 
+    /**
+     * Constructor
+     * @param stage Stage
+     * @throws Exception
+     */
     public MainController(Stage stage) throws Exception {
         this.stage = stage;
 
@@ -25,15 +33,19 @@ public class MainController {
         stage.setScene(scene);
         stage.show();
 
-        // Start Button
+        // Start button
         Button btnStart = (Button)scene.lookup("#btnStart");
         btnStart.setOnAction(this::btnStartAction);
 
-        // Exit Button
+        // Exit button
         Button btnExit = (Button)scene.lookup("#btnExit");
         btnExit.setOnAction(this::btnExitAction);
     }
 
+    /**
+     * Event for click on button
+     * @param event ActionEvent
+     */
     private void btnStartAction(ActionEvent event) {
         try {
             new CardpollController(stage);
@@ -43,6 +55,10 @@ public class MainController {
         }
     }
 
+    /**
+     * Event for click on button
+     * @param event ActionEvent
+     */
     private void btnExitAction(ActionEvent event) {
         System.exit(0);
     }

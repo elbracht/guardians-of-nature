@@ -3,6 +3,11 @@ package elementum.controllers.utils;
 import java.awt.*;
 import java.io.InputStream;
 
+/**
+ * @author Alexander Elbracht
+ *
+ * This class load different fonts with font type.
+ */
 public class FontLoader {
     public enum FontType { BOLD, ITALIC, LIGHT, REGULAR }
 
