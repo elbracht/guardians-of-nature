@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import java.util.logging.Level;
+
 /**
  * This class is the controller for the dialog view.
  */
@@ -45,7 +47,7 @@ public class DialogController {
                 dialogStage.close();
             }
             catch (Exception ex) {
-                // TODO: Catch exception
+                logging.log(Level.SEVERE, "Exception", ex);
             }
         });
 

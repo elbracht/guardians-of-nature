@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+import java.util.logging.Level;
+
 /**
  * This class is the controller for the game over view.
  */
@@ -59,7 +61,7 @@ public class GameoverController {
             new MainController(stage, logging);
         }
         catch (Exception ex) {
-            // TODO: Catch exception
+            logging.log(Level.SEVERE, "Exception", ex);
         }
     }
 }

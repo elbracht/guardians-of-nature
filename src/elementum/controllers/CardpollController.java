@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.awt.image.BufferedImage;
+import java.util.logging.Level;
 
 /**
  * This class is the controller for the card poll view.
@@ -121,8 +122,7 @@ public class CardpollController {
             new GameController(stage, logging, computer, player);
         }
         catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            // TODO: Catch exception
+            logging.log(Level.SEVERE, "Exception", ex);
         }
     }
 
@@ -135,8 +135,7 @@ public class CardpollController {
             new MainController(stage, logging);
         }
         catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            // TODO: Catch exception
+            logging.log(Level.SEVERE, "Exception", ex);
         }
     }
 }

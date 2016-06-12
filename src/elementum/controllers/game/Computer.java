@@ -16,7 +16,7 @@ public class Computer extends Player{
     /**
      * Constructor
      */
-    public Computer() {
+    public Computer() throws Exception {
         super();
 
         addRandomCards(new Cards());
@@ -43,7 +43,7 @@ public class Computer extends Player{
      * @param player Player for attack
      * @return Array of cards (attack and target)
      */
-    public Card[] makeTurn(Player player) {
+    public Card[] makeTurn(Player player) throws Exception {
         int[] cardIds = chooseCards(player);
 
         if (cardIds != null) {

@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import java.awt.image.BufferedImage;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
 
 /**
  * @author Alexander Elbracht
@@ -139,8 +140,7 @@ public class GameController implements Observer {
                         });
                     }
                     catch (Exception ex) {
-                        System.out.println(ex.getMessage());
-                        // TODO: Catch exception
+                        logging.log(Level.SEVERE, "Exception", ex);
                     }
                 });
 
@@ -317,8 +317,7 @@ public class GameController implements Observer {
                         }
                     }
                     catch (Exception ex) {
-                        System.out.println(ex.getMessage());
-                        // TODO: Catch exception
+                        logging.log(Level.SEVERE, "Exception", ex);
                     }
                 });
 
@@ -331,7 +330,7 @@ public class GameController implements Observer {
                 new GameoverController(stage, logging, referee);
             }
             catch (Exception ex) {
-                // TODO: Catch exception
+                logging.log(Level.SEVERE, "Exception", ex);
             }
         }
     }
@@ -355,7 +354,7 @@ public class GameController implements Observer {
             new DialogController(stage, logging);
         }
         catch (Exception ex) {
-            // TODO: Catch exception
+            logging.log(Level.SEVERE, "Exception", ex);
         }
     }
 }
