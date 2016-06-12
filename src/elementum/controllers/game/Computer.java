@@ -68,17 +68,124 @@ public class Computer extends Player{
             Card card = getCard(i);
 
             if (card.getHealth() > 0) {
-                int[] depth = createAttackTree(card, player.getCards());
-
-                for (int j = 0; j < depth.length; j++) {
-                    if (depth[j] > 0) {
-                        return new int[] { i, j };
-                    }
-                }
+                return new int[] { i, chooseDefenseCard(card, player) };
             }
         }
 
         return null;
+    }
+
+    /**
+     * Choose the defense card the first is destroyed
+     * @param attackCard Attack card
+     * @param player Player
+     * @return Id of defense card
+     */
+    private int chooseDefenseCard(Card attackCard, Player player) {
+        int[] depth = createAttackTree(attackCard, player.getCards());
+        Random random = new Random();
+
+        // Everything is different
+        if (depth[0] != depth[1] && depth[1] != depth[2] && depth[0] != depth[2]) {
+            if (depth[0] > 0 && depth[1] > 0 && depth[2] > 0) {
+                if (depth[0] < depth[1] && depth[0] < depth[2]) {
+                    return 0;
+                }
+                else if (depth[1] < depth[0] && depth[1] < depth[2]) {
+                    return 1;
+                }
+                else if (depth[2] < depth[0] && depth[2] < depth[1]) {
+                    return 2;
+                }
+            }
+            else if (depth[0] <= 0 && depth[1] > 0 && depth[2] > 0) {
+                if (depth[1] < depth[2]) {
+                    return 1;
+                }
+                else {
+                    return 2;
+                }
+            }
+            else if (depth[0] > 0 && depth[1] <= 0 && depth[2] > 0) {
+                if (depth[0] < depth[2]) {
+                    return 0;
+                }
+                else {
+                    return 2;
+                }
+            }
+            else if (depth[0] > 0 && depth[1] > 0 && depth[2] <= 0) {
+                if (depth[0] < depth[1]) {
+                    return 0;
+                }
+                else {
+                    return 1;
+                }
+            }
+        }
+        // Everything is same
+        else if (depth[0] == depth[1] && depth[1] == depth[2] && depth[0] == depth[2]) {
+            return random.nextInt(3);
+        }
+        // 0 and 1 are the same
+        else if (depth[0] == depth[1] && depth[0] != depth[2] && depth[1] != depth[2]) {
+            if (depth[0] > 0) {
+                if (depth[0] < depth[2]) {
+                    if (Math.random() < 0.5) {
+                        return 0;
+                    }
+                    else {
+                        return 1;
+                    }
+                }
+                else {
+                    return 2;
+                }
+            }
+            else {
+                return 2;
+            }
+        }
+        // 1 and 2 are the same
+        else if (depth[1] == depth[2] && depth[1] != depth[0] && depth[2] != depth[0]) {
+            if (depth[1] > 0) {
+                if (depth[1] < depth[0]) {
+                    if (Math.random() < 0.5) {
+                        return 1;
+                    }
+                    else {
+                        return 2;
+                    }
+                }
+                else {
+                    return 0;
+                }
+            }
+            else {
+                return 0;
+            }
+        }
+        // 0 and 2 are the same
+        else if (depth[0] == depth[2] && depth[0] != depth[1] && depth[2] != depth[1]) {
+            if (depth[0] > 0) {
+                if (depth[0] < depth[1]) {
+                    if (Math.random() < 0.5) {
+                        return 0;
+                    }
+                    else {
+                        return 2;
+                    }
+                }
+                else {
+                    return 1;
+                }
+            }
+            else {
+                return 1;
+            }
+        }
+
+        return 0;
     }
 
     /**
