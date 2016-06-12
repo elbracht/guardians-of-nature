@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<en_US>
+    <cards>
+        <bear>Bear</bear>
+        <bird>Bird</bird>
+        <fox>Fox</fox>
+        <giraffe>Giraffe</giraffe>
+        <monkey>Monkey</monkey>
+        <mouse>Mouse</mouse>
+        <owl>Owl</owl>
+        <panda>Panda</panda>
+        <pig>Pig</pig>
+        <pufferfish>Pufferfish</pufferfish>
+        <tiger>Tiger</tiger>
+        <turtle>Turtle</turtle>
+    </cards>
+    <ui>
+        <main-button-start>START</main-button-start>
+        <main-button-exit>EXIT</main-button-exit>
+        <cardpoll-button-continue>COUNTINUE</cardpoll-button-continue>
+        <cardpoll-button-back>BACK</cardpoll-button-back>
+        <cardpoll-label-help-single>Choose 1 card</cardpoll-label-help-single>
+        <cardpoll-label-help>Choose %d cards</cardpoll-label-help>
+        <game-button-help>HELP</game-button-help>
+        <game-button-back>BACK</game-button-back>
+        <game-label-player>Player</game-label-player>
+        <game-label-computer>Computer</game-label-computer>
+        <game-label-help-player>It's players turn.</game-label-help-player>
+        <game-label-help-computer>It's computer turn.</game-label-help-computer>
+        <gameover-button-back>BACK</gameover-button-back>
+        <gameover-label-title>Game over</gameover-label-title>
+        <gameover-label-winner-player>You win.</gameover-label-winner-player>
+        <gameover-label-winner-computer>The computer win.</gameover-label-winner-computer>
+        <dialog-button-yes>YES</dialog-button-yes>
+        <dialog-button-no>NO</dialog-button-no>
+        <dialog-label-text>Would you really exit the game?</dialog-label-text>
+    </ui>
+</en_US>
