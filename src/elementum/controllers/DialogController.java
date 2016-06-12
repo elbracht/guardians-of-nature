@@ -1,11 +1,13 @@
 package elementum.controllers;
 
 import elementum.controllers.utils.CursorLoader;
+import elementum.controllers.utils.Locale;
 import elementum.controllers.utils.Logging;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.util.logging.Level;
@@ -27,6 +29,8 @@ public class DialogController {
         this.stage = stage;
         this.logging = logging;
 
+        Locale locale = new Locale();
+
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/dialog.fxml"));
         root.setCursor(CursorLoader.getDefault());
 
@@ -40,8 +44,9 @@ public class DialogController {
         dialogStage.show();
 
         // Yes button
-        Button buttonYes = (Button)scene.lookup("#btnYes");
-        buttonYes.setOnAction(event -> {
+        Button btnYes = (Button)scene.lookup("#btnYes");
+        btnYes.setText(locale.getString("ui", "dialog-button-yes"));
+        btnYes.setOnAction(event -> {
             try {
                 thread.stop();
                 new MainController(stage, logging);
@@ -53,9 +58,14 @@ public class DialogController {
         });
 
         // No button
-        Button buttonNo = (Button)scene.lookup("#btnNo");
-        buttonNo.setOnAction(event -> {
+        Button btnNo = (Button)scene.lookup("#btnNo");
+        btnNo.setText(locale.getString("ui", "dialog-button-no"));
+        btnNo.setOnAction(event -> {
             dialogStage.close();
         });
+
+        // Text label
+        Label lblText = (Label)scene.lookup("#lblText");
+        lblText.setText(locale.getString("ui", "dialog-label-text"));
     }
 }
