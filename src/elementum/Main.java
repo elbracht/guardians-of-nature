@@ -1,8 +1,11 @@
 package elementum;
 
 import elementum.controllers.MainController;
+import elementum.controllers.utils.Logging;
 import javafx.application.Application;
 import javafx.stage.Stage;
+
+import java.util.logging.Level;
 
 /**
  * @author Alexander Elbracht
@@ -12,7 +15,14 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        new MainController(primaryStage);
+        Logging logging = new Logging();
+
+        try {
+            new MainController(primaryStage, logging);
+        }
+        catch (Exception ex) {
+            logging.log(Level.SEVERE, "Exception", ex);
+        }
     }
 
     public static void main(String[] args) {
