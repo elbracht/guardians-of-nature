@@ -12,7 +12,7 @@ import java.io.InputStream;
  * @author Alexander Elbracht
  */
 public class Locale {
-    static final String locale = "de_DE";
+    static final String LOCALE = "de_DE";
 
     private Document document;
 
@@ -20,7 +20,7 @@ public class Locale {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
 
-        InputStream inputStream = getClass().getResourceAsStream(String.format("/elementum/l18n/%s.xml", locale));
+        InputStream inputStream = getClass().getResourceAsStream(String.format("/elementum/l18n/%s.xml", LOCALE));
         document = builder.parse(inputStream);
     }
 
