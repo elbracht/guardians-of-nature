@@ -60,19 +60,17 @@ public class CardpollController {
         lblHelp.setText(String.format("Wähle %d Karten", player.CARD_LIMIT - player.getCardsCount()));
 
         // Cards
-        for (Node card : scene.lookup("*").lookupAll(".card")) {
+        for (Node imageView : scene.lookup("*").lookupAll(".card")) {
             // Add images
-            int cardId = Integer.parseInt(card.getId());
-            ImageView cardImageView = (ImageView)card;
-            BufferedImage cardImage = cards.getCards().get(cardId).getImage();
-            cardImageView.setImage(SwingFXUtils.toFXImage(cardImage, null));
+            int id = Integer.parseInt(imageView.getId());
+            BufferedImage cardImage = cards.getCards().get(id).getImage();
+            ((ImageView)imageView).setImage(SwingFXUtils.toFXImage(cardImage, null));
 
             // Cursor
-            card.setCursor(CursorLoader.getSelect());
+            imageView.setCursor(CursorLoader.getSelect());
 
             // Add event
-            card.setOnMouseClicked(t -> {
-                ImageView imageView = (ImageView)t.getSource();
+            imageView.setOnMouseClicked(t -> {
                 ObservableList styleClass = imageView.getStyleClass();
                 int imageId = Integer.parseInt(imageView.getId());
 
