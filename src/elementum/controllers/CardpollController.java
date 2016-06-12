@@ -109,10 +109,10 @@ public class CardpollController {
                     lblHelp.setText("");
                 }
                 else if (player.getCardsCount() == player.CARD_LIMIT - 1) {
-                    lblHelp.setText("Wähle 1 Karte");
+                    lblHelp.setText(locale.getString("ui", "cardpoll-label-help-single"));
                 }
                 else if (player.getCardsCount() < player.CARD_LIMIT) {
-                    lblHelp.setText(String.format("Wähle %d Karten", player.CARD_LIMIT - player.getCardsCount()));
+                    lblHelp.setText(String.format(locale.getString("ui", "cardpoll-label-help"), player.CARD_LIMIT - player.getCardsCount()));
                 }
             });
         }
