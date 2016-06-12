@@ -1,9 +1,9 @@
 package elementum.controllers;
 
+import elementum.controllers.game.Computer;
 import elementum.controllers.game.Player;
 import elementum.controllers.game.Referee;
 import elementum.controllers.utils.CursorLoader;
-import elementum.controllers.game.Computer;
 import elementum.models.Card;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;

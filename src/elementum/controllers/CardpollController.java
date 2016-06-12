@@ -3,7 +3,6 @@ package elementum.controllers;
 import elementum.controllers.game.Computer;
 import elementum.controllers.game.Player;
 import elementum.controllers.utils.CursorLoader;
-import elementum.models.Card;
 import elementum.models.Cards;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
