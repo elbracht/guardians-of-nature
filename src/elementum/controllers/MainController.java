@@ -28,7 +28,7 @@ public class MainController {
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
 
-        stage.setTitle("Elementum");
+        stage.setTitle("Guardians of Nature");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.sizeToScene();
