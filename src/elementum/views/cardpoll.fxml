@@ -18,8 +18,8 @@
       <ImageView id="9" fitHeight="150.0" fitWidth="125.0" layoutX="160.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="20.0" y="40.0" />
       <ImageView id="10" fitHeight="150.0" fitWidth="125.0" layoutX="285.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="40.0" y="40.0" />
       <ImageView id="11" fitHeight="150.0" fitWidth="125.0" layoutX="410.0" layoutY="355.0" pickOnBounds="true" preserveRatio="true" styleClass="card" x="60.0" y="40.0" />
-      <Button id="btnContinue" disable="true" layoutX="615.0" layoutY="495.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="WEITER" />
-      <Button id="btnBack" layoutX="615.0" layoutY="425.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="ZURÜCK" />
-      <Label id="lblHelp" alignment="CENTER" layoutX="618.0" layoutY="387.0" prefHeight="17.0" prefWidth="150.0" text="Wähle %d Karten" />
+      <Button id="btnContinue" disable="true" layoutX="615.0" layoutY="495.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="[continue]" />
+      <Button id="btnBack" layoutX="615.0" layoutY="425.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="btn" text="[back]" />
+      <Label id="lblHelp" alignment="CENTER" layoutX="618.0" layoutY="387.0" prefHeight="17.0" prefWidth="150.0" text="[choose cards]" />
    </children>
 </Pane>

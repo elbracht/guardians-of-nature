@@ -3,6 +3,7 @@ package elementum.controllers;
 import elementum.controllers.game.Computer;
 import elementum.controllers.game.Player;
 import elementum.controllers.utils.CursorLoader;
+import elementum.controllers.utils.Locale;
 import elementum.controllers.utils.Logging;
 import elementum.models.Cards;
 import javafx.collections.ObservableList;
@@ -43,6 +44,8 @@ public class CardpollController {
         player = new Player();
         computer = new Computer();
 
+        Locale locale = new Locale();
+
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/cardpoll.fxml"));
         root.setCursor(CursorLoader.getDefault());
 
@@ -53,15 +56,17 @@ public class CardpollController {
 
         // Continue button
         Button btnContinue = (Button)scene.lookup("#btnContinue");
+        btnContinue.setText(locale.getString("ui", "cardpoll-button-continue"));
         btnContinue.setOnAction(this::btnContinueAction);
 
         // Back button
         Button btnBack = (Button)scene.lookup("#btnBack");
+        btnBack.setText(locale.getString("ui", "cardpoll-button-back"));
         btnBack.setOnAction(this::btnBackAction);
 
         // Help label
         Label lblHelp = (Label)scene.lookup("#lblHelp");
-        lblHelp.setText(String.format("Wähle %d Karten", player.CARD_LIMIT - player.getCardsCount()));
+        lblHelp.setText(String.format(locale.getString("ui", "cardpoll-label-help"), player.CARD_LIMIT - player.getCardsCount()));
 
         // Cards
         for (Node imageView : scene.lookup("*").lookupAll(".card")) {
