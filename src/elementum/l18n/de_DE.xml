@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<de_DE>
+    <cards>
+        <bear>Bär</bear>
+        <bird>Vogel</bird>
+        <fox>Fuchs</fox>
+        <giraffe>Giraffe</giraffe>
+        <monkey>Affe</monkey>
+        <mouse>Maus</mouse>
+        <owl>Eule</owl>
+        <panda>Panda</panda>
+        <pig>Pig</pig>
+        <pufferfish>Kugelfisch</pufferfish>
+        <tiger>Tiger</tiger>
+        <turtle>Schildkröte</turtle>
+    </cards>
+</de_DE>

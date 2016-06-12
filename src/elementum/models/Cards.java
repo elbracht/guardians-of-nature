@@ -1,5 +1,7 @@
 package elementum.models;
 
+import elementum.controllers.utils.Locale;
+
 import javax.imageio.ImageIO;
 import java.util.ArrayList;
 
@@ -16,10 +18,12 @@ public class Cards {
     }
 
     public Cards() throws Exception {
+        Locale locale = new Locale();
+
         cards = new ArrayList<>();
 
         Card bear = new Card();
-        bear.setName("Bär");
+        bear.setName(locale.getString("cards", "bear"));
         bear.setAttack(6);
         bear.setHealth(80);
         bear.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/bear.png")));
@@ -27,7 +31,7 @@ public class Cards {
         bear.paint();
 
         Card bird = new Card();
-        bird.setName("Vogel");
+        bird.setName(locale.getString("cards", "bird"));
         bird.setAttack(14);
         bird.setHealth(65);
         bird.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/bird.png")));
@@ -35,7 +39,7 @@ public class Cards {
         bird.paint();
 
         Card fox = new Card();
-        fox.setName("Fuchs");
+        fox.setName(locale.getString("cards", "fox"));
         fox.setAttack(20);
         fox.setHealth(42);
         fox.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/fox.png")));
@@ -43,7 +47,7 @@ public class Cards {
         fox.paint();
 
         Card giraffe = new Card();
-        giraffe.setName("Giraffe");
+        giraffe.setName(locale.getString("cards", "giraffe"));
         giraffe.setAttack(10);
         giraffe.setHealth(58);
         giraffe.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/giraffe.png")));
@@ -51,7 +55,7 @@ public class Cards {
         giraffe.paint();
 
         Card monkey = new Card();
-        monkey.setName("Affe");
+        monkey.setName(locale.getString("cards", "monkey"));
         monkey.setAttack(9);
         monkey.setHealth(60);
         monkey.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/monkey.png")));
@@ -59,7 +63,7 @@ public class Cards {
         monkey.paint();
 
         Card mouse = new Card();
-        mouse.setName("Maus");
+        mouse.setName(locale.getString("cards", "mouse"));
         mouse.setAttack(6);
         mouse.setHealth(55);
         mouse.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/mouse.png")));
@@ -67,7 +71,7 @@ public class Cards {
         mouse.paint();
 
         Card owl = new Card();
-        owl.setName("Eule");
+        owl.setName(locale.getString("cards", "owl"));
         owl.setAttack(16);
         owl.setHealth(42);
         owl.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/owl.png")));
@@ -75,7 +79,7 @@ public class Cards {
         owl.paint();
 
         Card panda = new Card();
-        panda.setName("Panda");
+        panda.setName(locale.getString("cards", "panda"));
         panda.setAttack(10);
         panda.setHealth(60);
         panda.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/panda.png")));
@@ -83,7 +87,7 @@ public class Cards {
         panda.paint();
 
         Card pig = new Card();
-        pig.setName("Schwein");
+        pig.setName(locale.getString("cards", "pig"));
         pig.setAttack(8);
         pig.setHealth(62);
         pig.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/pig.png")));
@@ -91,7 +95,7 @@ public class Cards {
         pig.paint();
 
         Card pufferfish = new Card();
-        pufferfish.setName("Kugelfisch");
+        pufferfish.setName(locale.getString("cards", "pufferfish"));
         pufferfish.setAttack(22);
         pufferfish.setHealth(26);
         pufferfish.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/pufferfish.png")));
@@ -99,7 +103,7 @@ public class Cards {
         pufferfish.paint();
 
         Card tiger = new Card();
-        tiger.setName("Tiger");
+        tiger.setName(locale.getString("cards", "tiger"));
         tiger.setAttack(24);
         tiger.setHealth(22);
         tiger.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/tiger.png")));
@@ -107,7 +111,7 @@ public class Cards {
         tiger.paint();
 
         Card turtle = new Card();
-        turtle.setName("Schildkröte");
+        turtle.setName(locale.getString("cards", "turtle"));
         turtle.setAttack(10);
         turtle.setHealth(59);
         turtle.setImageDefault(ImageIO.read(getClass().getResourceAsStream("/elementum/assets/cards/turtle.png")));
