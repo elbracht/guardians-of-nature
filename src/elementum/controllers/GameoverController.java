@@ -2,6 +2,7 @@ package elementum.controllers;
 
 import elementum.controllers.game.Referee;
 import elementum.controllers.utils.CursorLoader;
+import elementum.controllers.utils.Locale;
 import elementum.controllers.utils.Logging;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +31,8 @@ public class GameoverController {
         this.stage = stage;
         this.logging = logging;
 
+        Locale locale = new Locale();
+
         Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/gameover.fxml"));
         root.setCursor(CursorLoader.getDefault());
 
@@ -38,17 +41,22 @@ public class GameoverController {
 
         stage.setScene(scene);
 
+        // Title label
+        Label lblTitle = (Label)scene.lookup("#lblTitle");
+        lblTitle.setText(locale.getString("ui", "gameover-label-title"));
+
         // Winner label
-        Label lblGameover = (Label)scene.lookup("#lblGameover");
+        Label lblWinner = (Label)scene.lookup("#lblWinner");
         if (referee.isComputerGameOver()) {
-            lblGameover.setText("Sie haben gewonnen.");
+            lblWinner.setText(locale.getString("ui", "gameover-label-winner-player"));
         }
         else if (referee.isPlayerGameOver()) {
-            lblGameover.setText("Der Computer hat gewonnen.");
+            lblWinner.setText(locale.getString("ui", "gameover-label-winner-computer"));
         }
 
         // Back button
         Button btnBack = (Button)scene.lookup("#btnBack");
+        btnBack.setText(locale.getString("ui", "gameover-button-back"));
         btnBack.setOnAction(this::btnBackAction);
     }
 

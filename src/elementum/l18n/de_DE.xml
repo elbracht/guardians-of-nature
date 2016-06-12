@@ -26,6 +26,10 @@
         <game-label-computer>Computer</game-label-computer>
         <game-label-help-player>Spieler ist am Zug.</game-label-help-player>
         <game-label-help-computer>Computer ist am Zug.</game-label-help-computer>
+        <gameover-button-back>ZURÜCK</gameover-button-back>
+        <gameover-label-title>Spiel vorbei</gameover-label-title>
+        <gameover-label-winner-player>Sie haben gewonnen.</gameover-label-winner-player>
+        <gameover-label-winner-computer>Der Computer hat gewonnen.</gameover-label-winner-computer>
         <dialog-button-yes>JA</dialog-button-yes>
         <dialog-button-no>NEIN</dialog-button-no>
         <dialog-label-text>Möchten Sie das Spiel wirklich beenden?</dialog-label-text>
