@@ -55,6 +55,13 @@ public class MainController {
 
         // Language german
         ImageView btnGerman = (ImageView)scene.lookup("#language-de");
+
+        btnGerman.setOnMouseEntered(event -> {
+            if (locale.getLanguage() != "de_DE") {
+                btnGerman.setCursor(CursorLoader.getSelect());
+            }
+        });
+
         btnGerman.setOnMouseClicked(event -> {
             try {
                 new MainController(stage, logging, new Locale("de_DE"));
@@ -66,6 +73,13 @@ public class MainController {
 
         // Language english
         ImageView btnEnglish = (ImageView)scene.lookup("#language-en");
+
+        btnEnglish.setOnMouseEntered(event -> {
+            if (locale.getLanguage() != "en_US") {
+                btnEnglish.setCursor(CursorLoader.getSelect());
+            }
+        });
+
         btnEnglish.setOnMouseClicked(event -> {
             try {
                 new MainController(stage, logging, new Locale("en_US"));
