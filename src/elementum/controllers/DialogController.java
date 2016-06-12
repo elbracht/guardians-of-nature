@@ -23,7 +23,7 @@ public class DialogController {
      * @param stage Stage
      * @throws Exception
      */
-    public DialogController(Stage stage, Logging logging) throws Exception {
+    public DialogController(Stage stage, Logging logging, Thread thread) throws Exception {
         this.stage = stage;
         this.logging = logging;
 
@@ -43,6 +43,7 @@ public class DialogController {
         Button buttonYes = (Button)scene.lookup("#btnYes");
         buttonYes.setOnAction(event -> {
             try {
+                thread.stop();
                 new MainController(stage, logging);
                 dialogStage.close();
             }
