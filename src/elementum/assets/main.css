@@ -8,6 +8,11 @@
     -fx-font-size: 14px;
 }
 
+.h1 {
+    -fx-font-family: 'Open Sans', sans-serif;
+    -fx-font-size: 30px;
+}
+
 .btn-sml {
     -fx-background-color: rgba(41, 112, 176, 1.00);
     -fx-background-insets: 0;

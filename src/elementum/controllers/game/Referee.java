@@ -32,7 +32,7 @@ public class Referee extends Observable {
         return false;
     }
 
-    private boolean isComputerGameOver() {
+    public boolean isComputerGameOver() {
         boolean isGameOver = true;
 
         for (Card card : computer.getCards()) {
@@ -44,7 +44,7 @@ public class Referee extends Observable {
         return isGameOver;
     }
 
-    private boolean isPlayerGameOver() {
+    public boolean isPlayerGameOver() {
         boolean isGameOver = true;
 
         for (Card card : player.getCards()) {
