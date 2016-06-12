@@ -194,7 +194,7 @@ public class GameController implements Observer {
      * @param imageView ImageView
      * @param grayedOut Is the image view grayed out
      */
-    private void addCard(Card card, ImageView imageView, Boolean grayedOut) {
+    private void addCard(Card card, ImageView imageView, boolean grayedOut) {
         BufferedImage image = card.getImage();
         imageView.setImage(SwingFXUtils.toFXImage(image, null));
 

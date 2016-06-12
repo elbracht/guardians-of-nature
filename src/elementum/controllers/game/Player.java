@@ -85,7 +85,7 @@ public class Player {
         return cards.size();
     }
 
-    public Boolean containCard(Card card) {
+    public boolean containCard(Card card) {
         ArrayList<Card> keys = Collections.list(cards.keys());
         return keys.contains(card);
     }
