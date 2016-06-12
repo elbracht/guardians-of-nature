@@ -264,8 +264,13 @@ public class GameController implements Observer {
             }
         }
         else {
-            unselectAllCards();
-            lblInfo.setText("Spiel beendet.");
+            // Game over
+            try {
+                new GameoverController(stage, referee);
+            }
+            catch (Exception ex) {
+                // TODO: Catch exception
+            }
         }
     }
 
