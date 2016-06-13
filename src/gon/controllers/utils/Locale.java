@@ -32,7 +32,7 @@ public class Locale {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
 
-        InputStream inputStream = getClass().getResourceAsStream(String.format("/gon/l18n/%s.xml", language));
+        InputStream inputStream = getClass().getResourceAsStream(String.format("/gon/i18n/%s.xml", language));
         document = builder.parse(inputStream);
     }
 
