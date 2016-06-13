@@ -66,7 +66,7 @@ public class CardpollController {
 
         // Help label
         Label lblHelp = (Label)scene.lookup("#lblHelp");
-        lblHelp.setText(String.format(locale.getString("ui", "cardpoll-label-help"), player.CARD_LIMIT - player.getCardsCount()));
+        lblHelp.setText(String.format(locale.getString("ui", "cardpoll-label-help"), Player.CARD_LIMIT - player.getCardsCount()));
 
         // Cards
         for (Node imageView : scene.lookup("*").lookupAll(".card")) {
@@ -80,7 +80,7 @@ public class CardpollController {
 
             // Add event
             imageView.setOnMouseClicked(t -> {
-                ObservableList styleClass = imageView.getStyleClass();
+                ObservableList<String> styleClass = imageView.getStyleClass();
                 int imageId = Integer.parseInt(imageView.getId());
 
                 if (styleClass.contains("card-selected")) {
@@ -91,11 +91,11 @@ public class CardpollController {
                 }
                 else {
                     // Add Card
-                    if (player.getCardsCount() < player.CARD_LIMIT - 1) {
+                    if (player.getCardsCount() < Player.CARD_LIMIT - 1) {
                         player.addCard(0, cards.getCards().get(imageId));
                         styleClass.add("card-selected");
                     }
-                    else if (player.getCardsCount() == player.CARD_LIMIT - 1) {
+                    else if (player.getCardsCount() == Player.CARD_LIMIT - 1) {
                         player.addCard(0, cards.getCards().get(imageId));
                         styleClass.add("card-selected");
                         btnContinue.setDisable(false);
@@ -105,14 +105,14 @@ public class CardpollController {
                     }
                 }
 
-                if (player.getCardsCount() == player.CARD_LIMIT) {
+                if (player.getCardsCount() == Player.CARD_LIMIT) {
                     lblHelp.setText("");
                 }
-                else if (player.getCardsCount() == player.CARD_LIMIT - 1) {
+                else if (player.getCardsCount() == Player.CARD_LIMIT - 1) {
                     lblHelp.setText(locale.getString("ui", "cardpoll-label-help-single"));
                 }
-                else if (player.getCardsCount() < player.CARD_LIMIT) {
-                    lblHelp.setText(String.format(locale.getString("ui", "cardpoll-label-help"), player.CARD_LIMIT - player.getCardsCount()));
+                else if (player.getCardsCount() < Player.CARD_LIMIT) {
+                    lblHelp.setText(String.format(locale.getString("ui", "cardpoll-label-help"), Player.CARD_LIMIT - player.getCardsCount()));
                 }
             });
         }

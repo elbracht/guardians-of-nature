@@ -128,7 +128,7 @@ public class GameController implements Observer {
                         Platform.runLater(() -> {
                             // Select computer card
                             ImageView computerImageView = getImageView(id + 3);
-                            ObservableList styleClass = computerImageView.getStyleClass();
+                            ObservableList<String> styleClass = computerImageView.getStyleClass();
                             styleClass.add("card-selected");
                         });
 
@@ -179,7 +179,7 @@ public class GameController implements Observer {
         // Event for click on player card
         imageView.setOnMouseClicked(t -> {
             if (referee.isPlayersTurn()) {
-                ObservableList styleClass = imageView.getStyleClass();
+                ObservableList<String> styleClass = imageView.getStyleClass();
 
                 if (styleClass.contains("card-selected")) {
                     if (cardActive != null) {
@@ -296,7 +296,7 @@ public class GameController implements Observer {
                             Platform.runLater(() -> {
                                 // Select computer card
                                 ImageView imageView = getImageView(computer.getId(attackCard));
-                                ObservableList styleClass = imageView.getStyleClass();
+                                ObservableList<String> styleClass = imageView.getStyleClass();
                                 styleClass.add("card-selected");
                             });
 
@@ -305,7 +305,7 @@ public class GameController implements Observer {
                             Platform.runLater(() -> {
                                 // Select player card
                                 ImageView imageView = getImageView(player.getId(defenseCard));
-                                ObservableList styleClass = imageView.getStyleClass();
+                                ObservableList<String> styleClass = imageView.getStyleClass();
                                 styleClass.add("card-selected");
                             });
 

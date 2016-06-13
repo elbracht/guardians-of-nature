@@ -58,7 +58,7 @@ public class MainController {
         ImageView btnGerman = (ImageView)scene.lookup("#language-de");
 
         if (locale.getLanguage() == "de_DE") {
-            ObservableList styleClass = btnGerman.getStyleClass();
+            ObservableList<String> styleClass = btnGerman.getStyleClass();
             styleClass.add("card-selected");
         }
 
@@ -81,7 +81,7 @@ public class MainController {
         ImageView btnEnglish = (ImageView)scene.lookup("#language-en");
 
         if (locale.getLanguage() == "en_US") {
-            ObservableList styleClass = btnEnglish.getStyleClass();
+            ObservableList<String> styleClass = btnEnglish.getStyleClass();
             styleClass.add("card-selected");
         }
 

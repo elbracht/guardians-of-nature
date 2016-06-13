@@ -36,7 +36,7 @@ public class Locale {
         for (int i = 0; i < nodes.getLength(); i++) {
             Node node = nodes.item(i);
 
-            if(node.getNodeType() == node.ELEMENT_NODE) {
+            if(node.getNodeType() == Node.ELEMENT_NODE) {
                 if (node.getNodeName() == name) {
                     return node.getTextContent();
                 }
