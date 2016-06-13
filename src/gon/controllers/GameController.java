@@ -1,12 +1,12 @@
-package elementum.controllers;
+package gon.controllers;
 
-import elementum.controllers.game.Computer;
-import elementum.controllers.game.Player;
-import elementum.controllers.game.Referee;
-import elementum.controllers.utils.CursorLoader;
-import elementum.controllers.utils.Locale;
-import elementum.controllers.utils.Logging;
-import elementum.models.Card;
+import gon.controllers.game.Computer;
+import gon.controllers.game.Player;
+import gon.controllers.game.Referee;
+import gon.controllers.utils.CursorLoader;
+import gon.controllers.utils.Locale;
+import gon.controllers.utils.Logging;
+import gon.models.Card;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -57,11 +57,11 @@ public class GameController implements Observer {
         this.computer = computer;
         this.player = player;
 
-        Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/game.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gon/views/game.fxml"));
         root.setCursor(CursorLoader.getDefault());
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/gon/assets/main.css").toExternalForm());
 
         stage.setScene(scene);
 

@@ -1,8 +1,8 @@
-package elementum;
+package gon;
 
-import elementum.controllers.MainController;
-import elementum.controllers.utils.Locale;
-import elementum.controllers.utils.Logging;
+import gon.controllers.MainController;
+import gon.controllers.utils.Locale;
+import gon.controllers.utils.Logging;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

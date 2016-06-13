@@ -1,6 +1,6 @@
-package elementum.models;
+package gon.models;
 
-import elementum.controllers.utils.FontLoader;
+import gon.controllers.utils.FontLoader;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

@@ -1,6 +1,6 @@
-package elementum.controllers.game;
+package gon.controllers.game;
 
-import elementum.models.Card;
+import gon.models.Card;
 
 import java.util.Observable;
 

@@ -1,8 +1,8 @@
-package elementum.controllers;
+package gon.controllers;
 
-import elementum.controllers.utils.CursorLoader;
-import elementum.controllers.utils.Locale;
-import elementum.controllers.utils.Logging;
+import gon.controllers.utils.CursorLoader;
+import gon.controllers.utils.Locale;
+import gon.controllers.utils.Logging;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -32,11 +32,11 @@ public class MainController {
         this.logging = logging;
         this.locale = locale;
 
-        Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gon/views/main.fxml"));
         root.setCursor(CursorLoader.getDefault());
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/gon/assets/main.css").toExternalForm());
 
         stage.setTitle("Guardians of Nature");
         stage.setScene(scene);

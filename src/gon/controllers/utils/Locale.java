@@ -1,4 +1,4 @@
-package elementum.controllers.utils;
+package gon.controllers.utils;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -25,7 +25,7 @@ public class Locale {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
 
-        InputStream inputStream = getClass().getResourceAsStream(String.format("/elementum/l18n/%s.xml", language));
+        InputStream inputStream = getClass().getResourceAsStream(String.format("/gon/l18n/%s.xml", language));
         document = builder.parse(inputStream);
     }
 

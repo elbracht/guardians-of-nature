@@ -1,8 +1,8 @@
-package elementum.controllers;
+package gon.controllers;
 
-import elementum.controllers.utils.CursorLoader;
-import elementum.controllers.utils.Locale;
-import elementum.controllers.utils.Logging;
+import gon.controllers.utils.CursorLoader;
+import gon.controllers.utils.Locale;
+import gon.controllers.utils.Logging;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -31,11 +31,11 @@ public class DialogController {
         this.logging = logging;
         this.locale = locale;
 
-        Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/dialog.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gon/views/dialog.fxml"));
         root.setCursor(CursorLoader.getDefault());
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/gon/assets/main.css").toExternalForm());
 
         dialogStage = new Stage();
         dialogStage.setTitle("Spiel beenden");

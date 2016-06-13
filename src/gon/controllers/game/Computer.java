@@ -1,7 +1,7 @@
-package elementum.controllers.game;
+package gon.controllers.game;
 
-import elementum.models.Card;
-import elementum.models.Cards;
+import gon.models.Card;
+import gon.models.Cards;
 
 import java.util.Random;
 

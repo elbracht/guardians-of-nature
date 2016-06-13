@@ -1,11 +1,11 @@
-package elementum.controllers;
+package gon.controllers;
 
-import elementum.controllers.game.Computer;
-import elementum.controllers.game.Player;
-import elementum.controllers.utils.CursorLoader;
-import elementum.controllers.utils.Locale;
-import elementum.controllers.utils.Logging;
-import elementum.models.Cards;
+import gon.controllers.game.Computer;
+import gon.controllers.game.Player;
+import gon.controllers.utils.CursorLoader;
+import gon.controllers.utils.Locale;
+import gon.controllers.utils.Logging;
+import gon.models.Cards;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -46,11 +46,11 @@ public class CardpollController {
         player = new Player();
         computer = new Computer(new Cards(locale));
 
-        Parent root = FXMLLoader.load(getClass().getResource("/elementum/views/cardpoll.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gon/views/cardpoll.fxml"));
         root.setCursor(CursorLoader.getDefault());
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/elementum/assets/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/gon/assets/main.css").toExternalForm());
 
         stage.setScene(scene);
 

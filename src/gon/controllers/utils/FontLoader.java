@@ -1,4 +1,4 @@
-package elementum.controllers.utils;
+package gon.controllers.utils;
 
 import java.awt.*;
 import java.io.InputStream;
@@ -12,7 +12,7 @@ public class FontLoader {
     public enum FontType { BOLD, ITALIC, LIGHT, REGULAR }
 
     public static Font getOpenSans(FontType fontType, float size) throws Exception {
-        String fontName = String.format("/elementum/assets/OpenSans-%s.ttf", Text.capitalize(fontType.toString()));
+        String fontName = String.format("/gon/assets/OpenSans-%s.ttf", Text.capitalize(fontType.toString()));
         InputStream inputStream = FontLoader.class.getResourceAsStream(fontName);
         Font font = Font.createFont(java.awt.Font.TRUETYPE_FONT, inputStream);
         return font.deriveFont(size);
