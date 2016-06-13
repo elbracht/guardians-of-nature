@@ -22,6 +22,8 @@ import java.awt.image.BufferedImage;
 import java.util.logging.Level;
 
 /**
+ * @author Alexander Elbracht
+ *
  * This class is the controller for the card poll view.
  */
 public class CardpollController {

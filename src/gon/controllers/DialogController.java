@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import java.util.logging.Level;
 
 /**
+ * @author Alexander Elbracht
+ *
  * This class is the controller for the dialog view.
  */
 public class DialogController {

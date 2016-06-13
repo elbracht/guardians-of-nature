@@ -6,6 +6,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
+ * @author Alexander Elbracht
+ *
  * This model class contains all values for a card and
  * draw text (name, attack, health) on the card images.
  */

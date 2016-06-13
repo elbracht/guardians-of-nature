@@ -10,6 +10,9 @@ import java.io.InputStream;
 
 /**
  * @author Alexander Elbracht
+ *
+ * This class load different language files and
+ * internationalize the application
  */
 public class Locale {
     private String language;
@@ -19,6 +22,10 @@ public class Locale {
         return language;
     }
 
+    /**
+     * Constructor
+     * @param  language Language
+     */
     public Locale(String language) throws Exception {
         this.language = language;
 
@@ -29,6 +36,12 @@ public class Locale {
         document = builder.parse(inputStream);
     }
 
+    /**
+     * Get a string for the selected language
+     * @param tag Tag in xml document
+     * @param name Name in xml document
+     * @return String for the selected language
+     */
     public String getString(String tag, String name) {
         Node parent = document.getElementsByTagName(tag).item(0);
         NodeList nodes = parent.getChildNodes();
